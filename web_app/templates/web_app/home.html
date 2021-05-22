@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+        <title>Predulive Edutech Foundation</title>
+        <link rel="stylesheet" href="{% static 'web_app/styles/home.css' %}">
+    {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'educate' %}">
+                            <div id="experts">
+                                <img src="{% static 'web_app/images/expert.png' %}" alt="Expert.png">
+                                <hr>
+                                <h6>SUBJECT EXPERTS</h6>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#">
+                            <div id="jobs">
+                                <img src="{% static 'web_app/images/job-search.png' %}" alt="Jobs.png">
+                                <hr>
+                                <h6>EMPLOYMENT</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5%;">
+                    <div class="col-md-10">
+                        <h5 class="heading">Our Inspirational Videos</h5>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" style="text-align: right;">All Videos</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:2%;">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <video controls>
+                                <source src="{% static 'web_app/video/anthem.mp4' %}" type="video/mp4">
+                            </video>
+                            <div class="card-body">
+                                <small class="card-title text-muted">Anthem for Migrant workers: Gaon Maati | Sonu Sood's efforts❤️| Isha | Sadhguru| Predulive's efforts...</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <video controls>
+                                <source src="{% static 'web_app/video/memories_of_2_years_completion.mp4' %}" type="video/mp4">
+                            </video>
+                            <div class="card-body">
+                                <small class="card-title text-muted">Memories of the last 2 years : Happy 2nd Anniversary Folks | Thank you all for continued support :)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <video controls>
+                                <source src="{% static 'web_app/video/covid_prevention.mp4' %}" type="video/mp4">
+                            </video>
+                            <div class="card-body">
+                                <small class="card-title text-muted">Prevention of COVID-19 | Coronavirus in India | mygovindia | Predulive Edutech Foundation"s efforts</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container-fluid course-container">
+                        <div class="row container-title">
+                            <div class="col-md-12">
+                                <h5>Popular Courses</h5>
+                            </div>
+                        </div>
+                        {% if all_courses %}
+                            {% for course in all_courses %}
+                                <div class="row">
+                            <div class="col-md-12">
+                                <div class="container course">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="course-name">{{ course.course_title }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="course-detail">{{ course.about_course|slice:"0:100" }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <small class="course-duration">Duration: {{ course.duration }} months</small>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{% url 'course-detail' course.pk %}" class="btn btn-info btn-sm" id="details-button">Get Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            {% endfor %}
+                            {% else %}
+                            <p>No Courses Found</p>
+                        {% endif %}
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="heading">Career Awareness (Career Counselling)</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                    <a target="_blank" href="{% static 'web_app/images/t1.png' %}">
+                        <img class="counselling-image" src="{% static 'web_app/images/t1.png' %}" alt="Forest">
+                    </a>
+                </div>
+            <div class="col-md-3">
+                    <a target="_blank" href="{% static 'web_app/images/t2.jpeg' %}">
+                        <img class="counselling-image" src="{% static 'web_app/images/t2.jpeg' %}" alt="Forest">
+                    </a>
+                </div>
+            <div class="col-md-3">
+                    <a target="_blank" href="{% static 'web_app/images/t3.jpeg' %}">
+                        <img class="counselling-image" src="{% static 'web_app/images/t3.jpeg' %}" alt="Forest">
+                    </a>
+                </div>
+            <div class="col-md-3">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'video-upload' user.pk %}">
+                        <div class="story-div">
+                            <p class="story-content">Tell Us About Your Story</p>
+                            <small>(Upload Your Own Video)</small>
+                            <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
+                        </div>
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}">
+                        <div class="story-div">
+                            <p class="story-content">Tell Us About Your Story</p>
+                            <small>(Upload Your Own Video)</small>
+                            <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
+                        </div>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="heading">Our Working Projects (Educate)</h5>
+            </div>
+            <div class="col-md-2">
+                <a href="#">All Projects</a>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2%;">
+            <div class="col-md-3">
+                <iframe class="educate-video" src="https://www.youtube.com/embed/5IIE6Z2foJw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-3">
+                <iframe class="educate-video" src="https://www.youtube.com/embed/OM7j0vM89HE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-3">
+                <iframe class="educate-video" src="https://www.youtube.com/embed/7C8PwiMdKzU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-3">
+                <iframe class="educate-video" src="https://www.youtube.com/embed/XV52X1U42EY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="heading">Employment (Hot Jobs)</h5>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 1%;">
+            <div class="col-md-6">
+                <h5>Government Jobs</h5>
+            </div>
+            <div class="col-md-6">
+                <h5>Tech Jobs</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">SBI Junior Associates Clerk Online, 5000 post</h5>
+                        <small class="card-text">State Bank of India SBI Are Recently Invited Online Application Form for the Junior Associate Clerk Recruitment 2021.
+                            Those Candidates Are Interested to the...
+                        </small><br>
+                        <a style="float:right;" href="https://www.sarkariresult.com/bank/sbi-clerk-2021.php" class="btn btn-primary">More information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Google is hiring for several tech roles in India</h5>
+                                <small class="card-text">Google India has rolled out applications for several tech roles across the country. Interested candidates
+                                    can easily apply on the website. Here are the major details.
+                                </small><br>
+                                <a style="float:right;" href="https://content.techgig.com/google-is-hiring-for-several-tech-roles-in-india-here-are-the-details/articleshow/82358491.cms" class="btn btn-primary">More information</a>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">UP Police Sub Inspector SI Online, 9534 Post</h5>
+                        <small class="card-text">Uttar Pradesh Police Recruitment and Promation Board UP PRPB Are Invited to Online Application Form for the Recruitment
+                            Post of Sub Inspector 2021. Those Candidates Are Interested to the...
+                        </small><br>
+                        <a style="float:right;" href="https://www.sarkariresult.com/2021/up-police-si-2021.php" class="btn btn-primary" target="_blank">More information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Salesforce is hiring IT professionals for several roles</h5>
+                                <small class="card-text">Salesforce is hiring for several technical roles in several locations across India. Interested candidates can
+                                    directly visit their website and apply. Here are the details.
+                                    <br>1. Global Operations Lead- Global Business Services | Hyderabad
+                                </small><br>
+                                <a style="float:right;" href="https://content.techgig.com/salesforce-is-hiring-it-professionals-for-multiple-job-roles-apply-here/articleshow/82358252.cms" class="btn btn-primary" target="_blank">More information</a>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+{% endblock %}

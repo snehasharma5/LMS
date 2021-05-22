@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Inspire | Predulive Edutech Foundation</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/inspire.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="bottom row">
+        <div class="col-md-7">
+            {% block video-form %}
+                <h1>INSP<u>i</u>RE</h1>
+                <small class="text-success">(Predulive Edutech Foundation)</small>
+                <p class="inspire-text">To succeed in life the best medicine is the inspiration. You have your dreams but you are
+                    scared of them, that's okay because if your dreams don't scare you that means they are too small.
+                    <b><u>Predulive Edutech Foundation</u></b>
+                    is with you to inspire you and walk with you till your dreams come true..
+                </p>
+            {% endblock %}
+        </div>
+        <div class="col-md-5" style="padding:0 2rem 2rem 2rem;">
+            <a href="{% url 'video-upload' user.pk %}">
+                <div class="row video-div">
+                    <div class="col-md-8">
+                        <h4>Tell Us About Your Story</h4>
+                        <small class="text-muted">(Upload Your Video)</small>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="Video.png">
+                    </div>
+                </div>
+            </a>
+
+            <div class="row inspire-heading-row">
+                <div class="col-md-8">
+                    <h5>Our Inspirational Videos</h5>
+                </div>
+                <div class="col-md-4" style="text-align: right;">
+                    <a href="https://www.youtube.com/channel/UCQgYqhUFzZjtrGF_O5uAt9A">All Videos</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <iframe class="video-frame" src="https://www.youtube.com/embed/46xPDSGZKJc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <iframe class="video-frame" src="https://www.youtube.com/embed/VDZXqmi8NPE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <iframe class="video-frame" src="https://www.youtube.com/embed/Wa99Sbe8tQM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <iframe class="video-frame" src="https://www.youtube.com/embed/i3QFNMO_Iuc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Aware | Predulive Edutech Foundation</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/aware.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>AW<u>a</u>RE</h1>
+                <small class="text-success">(Predulive Edutech Foundation)</small>
+                <p class="aware-text">To succeed in life the best medicine is the inspiration. You have your dreams but you are
+                    scared of them, that's okay because if your dreams don't scare you that means they are too small.
+                    <b><u>Predulive Edutech Foundation</u></b>
+                    is with you to inspire you and walk with you till your dreams come true..
+                </p>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="#">
+                            <div class="aware card1">
+                                <img src="{% static 'web_app/images/career.png' %}" alt="Career.png">
+                                <hr>
+                                <h6>Career Counselling</h6>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#">
+                            <div class="aware card2">
+                                <img src="{% static 'web_app/images/awareness.png' %}" alt="Awareness.png">
+                                <hr>
+                                <h6>Virtual Career Awareness</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'career-counselling' user.pk %}">
+                            <div class="aware card3">
+                                <img src="{% static 'web_app/images/clipboard.png' %}" alt="Form.png">
+                                <hr>
+                                <h6>Form Filling</h6>
+                            </div>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}">
+                            <div class="aware card3">
+                                <img src="{% static 'web_app/images/clipboard.png' %}" alt="Form.png">
+                                <hr>
+                                <h6>Form Filling</h6>
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#">
+                            <div class="aware card4">
+                                <img src="{% static 'web_app/images/data-analytics.png' %}" alt="Result.png">
+                                <hr>
+                                <h6>Your Result</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

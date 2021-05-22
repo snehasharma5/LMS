@@ -1,0 +1,30 @@
+{% extends 'web_app/inspire.html' %}
+{% load static %}
+
+
+{% block video-form %}
+    <form method="post" enctype="multipart/form-data">
+    <h1>ST<u>o</u>RY</h1>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="id_title">Title of Inspirational Video:</label>
+                                <input type="text" name="title" maxlength="300" required id="id_title" class="form-control" placeholder="Enter Title of Your Inspirational Video">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="custom-file">
+                                    <label for="customFile">Video:</label>
+                                    <input type="file" class="custom-file-input" id="customFile" name="video">
+                                    <label class="custom-file-label" for="customFile">Choose your inspirational video..</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-outline-default">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+{% endblock %}

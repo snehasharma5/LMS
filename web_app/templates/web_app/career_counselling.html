@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Career Counselling | Predulive Edutech Foundation</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="id_passion">1. What can you do for a very long time without getting bored?</label>
+                <input type="text" name="passion" class="form-control" placeholder="Enter Your Answer" maxlength="1000" required id="id_passion">
+            </div>
+            <div class="col-md-6">
+                <label for="id_subject">2. What is your favourite subject?</label>
+                <input type="text" name="subject" class="form-control" placeholder="Enter Your Answer" maxlength="255" required id="id_subject">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="id_work_env">3. What type of work environment do you prefer?</label>
+                <input type="text" name="work_env" class="form-control" placeholder="Enter Your Answer" maxlength="255" required id="id_work_env">
+            </div>
+            <div class="col-md-6">
+                <label for="id_future_city">4. Where do you want to live in the future?</label>
+                <input type="text" name="future_city" class="form-control" placeholder="Enter Your Answer" maxlength="255" required id="id_future_city">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="id_your_future">5. Where do you see yourself after ten years or twenty years?</label>
+                <input type="text" name="your_future" class="form-control" placeholder="Enter Your Answer" maxlength="255" required id="id_your_future">
+            </div>
+            <div class="col-md-6">
+                <label for="id_ideal">6. Who is your ideal?</label>
+                <input type="text" name="ideal" class="form-control" placeholder="Enter Your Answer" maxlength="255" required id="id_ideal">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="id_purpose">7. What is your purpose in life?</label>
+                <input type="text" name="purpose" class="form-control" placeholder="Enter Your Answer" maxlength="1000" required id="id_purpose">
+            </div>
+        </div>
+        <button class="btn btn-info">SUBMIT</button>
+    </form>
+{% endblock %}

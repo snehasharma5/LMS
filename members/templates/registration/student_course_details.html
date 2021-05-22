@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ user.first_name }} {{ user.last_name }} | Courses</title>
+{% endblock %}
+
+{% block content %}
+    {% if all_courses %}
+        <ul>
+        {% for course in all_courses %}
+            <li>{{ course.course_title }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

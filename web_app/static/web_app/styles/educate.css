@@ -1,0 +1,148 @@
+.course-btn
+{
+    width: 100%;
+}
+
+.about-course
+{
+    padding: 40px;
+    text-align: justify;
+}
+
+.panel
+{
+    margin-top:2%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.panel-heading
+{
+    background-color: #f7f7f7;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.course-price
+{
+    text-align: center;
+    font-weight: bold;
+}
+
+.all-btn
+{
+    margin-top: 3%;
+    height: 150px;
+    width: 100%;
+    border-radius: 40px;
+}
+
+.course-container1
+{
+    border-radius: 20px;
+    padding:20px;
+    margin-top:2%;
+    text-align: justify;
+}
+
+img
+{
+    width: 100%;
+}
+
+.other-link
+{
+    margin-top: 2%;
+    border-bottom: 1px solid #e5e5e5;
+    padding:10px;
+}
+
+#other-link-btn
+{
+    border-radius: 50%;
+}
+
+.course-item
+{
+    padding: 20px;
+    background:linear-gradient(150deg, rebeccapurple 80%, #ffdddd 30%);
+    margin-top: 2%;
+    border-radius: 20px;
+    color: #e5e5e5;
+}
+
+.course-item a h4
+{
+    color: white;
+    font-weight: bold;
+}
+
+.course-item p
+{
+    color:black;
+    font-size: 14px;
+}
+
+.all-course-div
+{
+    border-right: 1px solid #00023A;
+}
+
+.course-form-div
+{
+    border: 1px solid palevioletred;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.course-form-div .row
+{
+    margin-top: 1%;
+}
+
+.course-item img
+{
+    width: 100%;
+}
+
+.category-name:hover
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: white;
+}
+
+.course-title-div
+{
+    background:linear-gradient(150deg, white 80%, #ffdddd 30%);
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.course-row
+{
+    background:linear-gradient(150deg, white 70%, #ffdddd 40%);
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.course-action
+{
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+
+#enroll
+{
+    background-color: lightseagreen;
+}

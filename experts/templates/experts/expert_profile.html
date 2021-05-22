@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block head %}
+        <title>{{ expert_user.user.first_name }} {{ expert_user.user.last_name }} | Profile</title>
+        <link rel="stylesheet" href="{% static 'web_app/styles/profile.css' %}">
+    {% endblock %}
+    {% block content %}
+      <div class="row">
+        <div class="col-md-2">
+          {% if expert_user.profile_pic %}
+              <img src="{{ expert_user.profile_pic.url }}" alt="profile_pic.jpg" id="profile_pic">
+          {% else %}
+              <img src="{% static 'web_app/images/profile-user.png' %}" alt="profile_pic.jpg" id="profile_pic">
+            {% endif %}
+        </div>
+        <div class="col-md-8" id="profile_area">
+            <div class="row">
+                <div class="col-md-12" id="user_name">
+                    <h1>{{ expert_user.user.first_name }} {{ expert_user.user.last_name }}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Contact Details:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Mobile Number:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if expert_user.mobile %}
+                            <label>{{ expert_user.mobile }}</label>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Email ID:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.user.email }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Personal Details:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Address:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if expert_user.address %}
+                            <label>{{ expert_user.address }}</label>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Date of Birth:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.user.date_of_birth }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Qualification:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Highest Qualification:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.qualification }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Institute Name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.institute_name }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Expertise Area:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.expertise_area }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Experience:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ expert_user.experience }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Profiles:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Resume</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if expert_user.resume %}
+                            <a class="btn btn-warning" href="{{ expert_user.resume.url }}">Download Resume</a>
+                        {% else %}
+                            <label>Please upload resume by clicking on "Profile Update Button"</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>LinkedIn URL:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if expert_user.linkedIn_url %}
+                            <u><a href="{{ expert_user.linkedIn_url }}" style="color:deepskyblue;">{{ expert_user.linkedIn_url }}</a></u>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row imp_btn">
+                <div class="col-md-12">
+                    <a href="{% url 'expert-profile-update' expert_user.pk %}"class="btn btn-info" id="profile_button">Update Profile</a>
+                </div>
+            </div>
+            <div class="row imp_btn">
+                <div class="col-md-12">
+                    <a href="{% url 'user-settings' expert_user.user.pk %}" class="btn btn-info" id="profile_button">Update Settings</a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    {% endblock %}

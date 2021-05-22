@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ user.first_name }} {{ user.last_name }} | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/register.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="div-group" id="inspire">
+                            <img src="{% static 'web_app/images/inspire.png' %}" alt="inspire.png">
+                            <h6>INSPIRE</h6>
+                            <p id="inspire-btn">(Your Inspirational Video)</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="div-group" id="aware">
+                            <img src="{% static 'web_app/images/aware.png' %}" alt="aware.png">
+                            <h6>AWARE</h6>
+                            <p id="aware-btn">(Counselling Sessions,Form and Results)</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'student-course' user.pk %}">
+                        <div class="div-group" id="educate">
+                            <img src="{% static 'web_app/images/educate.png' %}" alt="educate.png">
+                            <h6>EDUCATE</h6>
+                            <p id="educate-btn">(Your Courses and Projects)</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="div-group" id="employ">
+                            <img src="{% static 'web_app/images/employ.png' %}" alt="employ.png">
+                            <h6>EMPLOY</h6>
+                            <p id="employ-btn">(Jobs and Internships)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Your Subject Experts</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div style="padding: 10px;">
+                            <img class="card-img-top" src="{% static 'web_app/images/profile-user.png' %}" alt="Expert Image">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Expert Name: Snehlata Sharma</h6>
+                            <p class="card-text">Subject: Computer Science</p>
+                            <p class="card-text"><small class="text-muted">Experience: 5 years</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div style="padding: 10px;">
+                            <img class="card-img-top" src="{% static 'web_app/images/profile-user.png' %}" alt="Expert Image">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Expert Name: Snehlata Sharma</h6>
+                            <p class="card-text">Subject: Computer Science</p>
+                            <p class="card-text"><small class="text-muted">Experience: 5 years</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div style="padding: 10px;">
+                            <img class="card-img-top" src="{% static 'web_app/images/profile-user.png' %}" alt="Expert Image">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Expert Name: Snehlata Sharma</h6>
+                            <p class="card-text">Subject: Computer Science</p>
+                            <p class="card-text"><small class="text-muted">Experience: 5 years</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+{% endblock %}

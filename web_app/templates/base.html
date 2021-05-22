@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/a6c479c4d6.js" crossorigin="anonymous"></script>
+    {% block head %}
+        <title>Predulive Edutech Foundation</title>
+    {% endblock %}
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="icon" href="{% static 'web_app/images/logo.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'web_app/styles/sidebar.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Predulive</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="active"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; Home</a></li>
+                {% if user.is_authenticated %}
+                    {% if user.is_student %}
+                        <li><a href="{% url 'dashboard' user.first_name user.pk %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                    {% elif user.is_expert %}
+                        <li><a href="{% url 'expert-dashboard' user.first_name user.pk %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                    {% elif user.is_institute %}
+                        <li><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                    {% else %}
+                        <li><a href="/admin/"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'login' %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; Dasboard</a></li>
+                {% endif %}
+                <li><a href="{% url 'inspire' %}"><i class="fa fa-lightbulb" aria-hidden="true"></i>&nbsp;&nbsp; Inspire</a></li>
+                <li><a href="{% url 'aware' %}"><i class='fas fa-broadcast-tower' aria-hidden="true"></i>&nbsp;&nbsp; Aware</a></li>
+                <li><a href="{% url 'educate' %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp; Educate</a></li>
+                <li><a href="{% url 'contact' %}"><i class="fa fa-tasks" aria-hidden="true"></i>&nbsp;&nbsp; Employ</a></li>
+                <li><a href="{% url 'contact' %}"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; Contact Us</a></li>
+            </ul>
+
+        </nav>
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav mr-auto" style="margin-left: 5%;margin-top: 1%;">
+                            <li class="nav-item">
+                                <h6 class="text-danger" id="today_date"></h6>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav mr-0">
+
+                            <li class="nav-item">
+                                <a href="https://predulive.com/">
+                                    <img src="{% static 'web_app/images/logo1.png' %}" alt="logo_image" id="logo">
+                                </a>
+                            </li>
+
+                        </ul>
+                            {% if user.is_authenticated %}
+                                <ul class="nav navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        {% if user.is_student %}
+                                            <a href="{% url 'profile' user.student.pk %}" class="btn btn-default">
+                                                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                            </a>
+                                        {% elif user.is_expert %}
+                                            <a href="{% url 'expert-profile' user.expert.pk %}" class="btn btn-default">
+                                                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                            </a>
+                                        {% else %}
+                                            <a href="/admin/" class="btn btn-default" class="btn btn-deault">
+                                                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                            </a>
+                                        {% endif %}
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'logout' %}" class="btn btn-outline-danger">logout</a>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <ul class="nav navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a href="{% url 'login' %}" class="btn btn-default">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{% url 'member-register' %}" class="btn btn-default">Register</a>
+                                    </li>
+                                </ul>
+                            {% endif %}
+
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="container-fluid"id="support-div">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h6>Supported By:&nbsp;</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img class="support-image" src="{% static 'web_app/images/logo/startup_up.png' %}">
+                                <img class="support-image" src="{% static 'web_app/images/logo/startup_india.png' %}">
+                                <img class="support-image" src="{% static 'web_app/images/logo/stpi.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                          <div class="row">
+                            <div class="col-md-12">
+                                <h6>Contact Us:</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-11">
+                                <span>+91 6306104828</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-11">
+                                <span>info@predulive.org</span>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="footer">
+                <h6>&copy; Predulive Edutech Foundation</h6>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"
+            ];
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = monthNames[today.getMonth()]; //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + ', ' + dd + ' ' + yyyy;
+        document.getElementById("today_date").innerHTML = today;
+    </script>
+
+</body>
+
+</html>

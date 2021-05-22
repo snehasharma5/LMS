@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>All Courses | Predulive Edutech Foundation</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/educate.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row course-title-div">
+        <div class="col-md-3">
+            <h5>All Courses</h5>
+        </div>
+        <div class="col-md-1">
+            <small>Filter:</small>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <small>Categories:</small>
+                </div>
+                <div class="col-md-8">
+                    <div class="dropdown show">
+                        <a class="dropdown-toggle category-name" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <small>All Categories</small>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            {% if category %}
+                                {% for category_item in category %}
+                                    <a class="dropdown-item" href="#">{{ category_item }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <a class="dropdown-item disabled" href="#">No Category Found</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <small>Latest Courses:</small>
+        </div>
+    </div>
+    <div class="row">
+        {% if object_list %}
+            {% for course in object_list %}
+                <div class="col-md-4">
+                    <div class="course-item">
+                        <small>{{ course.category }}</small><br>
+                        <a href="{% url 'course-detail' course.pk %}">
+                            <h4>{{ course.course_title }}</h4>
+                        </a>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>{{ course.short_intro|slice:"0:50" }}..</p>
+                                <small>Duration: {{ course.duration }} months</small>
+                            </div>
+                            <div class="col-md-4">
+                                {% if course.course_icon %}
+                                    <img src="{{ course.course_icon.url }}">
+                                {% else %}
+                                    <img src="{% static 'web_app/images/online-course.png' %}">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No Course Found</p>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+#experts, #jobs
+{
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+    padding:1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#experts h6, #jobs h6
+{
+    font-weight: bold;
+}
+
+#experts img, #jobs img
+{
+    width: 25%;
+}
+
+.course-container
+{
+    background: #fafafa;
+    padding:10px;
+    float: right;
+    margin-top: 8%;
+    height: 90%;
+}
+
+.course-name
+{
+    text-align: left;
+}
+
+.course-detail
+{
+    font-size: 12px;
+    text-align: left;
+}
+
+.course-duration
+{
+    color: gray;
+    text-align: right;
+}
+
+.course-price
+{
+    margin-top: 20%;
+    font-size: 24px;
+    font-weight: bold;
+    color:black;
+}
+
+.course
+{
+    padding-bottom:10px;
+    padding-top:10px;
+    color:black;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.container-title
+{
+    padding: 5px;
+}
+
+#details-button
+{
+    float:right;
+    border-radius: 20px;
+    background-color: #00023A;
+}
+
+.counselling-image {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    background-color: black;
+    float: left;
+}
+
+.counselling-image:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.story-div
+{
+    width: 100%;
+    height: 91%;
+    text-align: center;
+    box-shadow: 0 0 5px 1px rgba(0, 0,0, 0.2);
+    padding: 10px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    float: left;
+
+}
+
+.story-content
+{
+    font-size: 35px;
+    color: #00023A;
+    font-weight: bold;
+    margin-top: 10%;
+}
+
+.video-img:hover
+{
+    transform: rotate(-15deg);
+}
+
+
+.heading
+{
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: bold;
+}
+
+.educate-video
+{
+    border: 5px solid #fafafa;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.background-img
+{
+    background-position: center;
+    background-repeat: no-repeat;
+    width:100%;
+    height:40rem;
+}

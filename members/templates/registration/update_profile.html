@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4" style="border:1px solid #00023A; padding:20px;">
+                  {% if page_user.profile_pic %}
+                      <img src="{{ page_user.profile_pic.url }}" alt="profile_pic.jpg" style="width: 100%;">
+                      <div class="custom-file" style="margin-top: 5%;">
+                          <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                          <label class="custom-file-label" for="customFile">{{ page_user.profile_pic.url }}</label>
+                      </div>
+                  {% else %}
+                      <img src="{% static 'web_app/images/profile-user.png' %}" alt="profile_pic.jpg" style="width: 100%;">
+                      <div class="custom-file" style="margin-top: 5%;">
+                          <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                          <label class="custom-file-label" for="customFile">Choose Profile Image....</label>
+                      </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h4>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Contact Details:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Mobile Number:</label>
+                        </div>
+                        <div class="col-md-9">
+                            {% if page_user.mobile %}
+                                <label>
+                                    <input type="number" name="mobile" value="{{ page_user.mobile }}" class="form-control">
+                                </label>
+                            {% else %}
+                                <label>Not Provided</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Personal Details:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Address:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <textarea class="form-control" name="address">{{ page_user.address }}</textarea>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Qualification:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Highest Qualification:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="qualification" class="form-control" value="{{ page_user.qualification }}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Institue Name:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="institute_name" class="form-control" value="{{ page_user.institute_name }}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Profiles:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Resume</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="custom-file">
+                                {% if page_user.resume %}
+                              <input type="file" class="custom-file-input" id="customFile" name="resume" value="{{ page_user.resume.url }}">
+                                {% else %}
+                              <input type="file" class="custom-file-input" id="customFile" name="resume">
+                                {% endif %}
+                              <label class="custom-file-label" for="customFile">Choose Resume....</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>LinkedIn URL:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input value="{{ page_user.linkedIn_url }}" type="text" class="form-control" name="linkedIn_url">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-info" id="register_button">Submit</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}

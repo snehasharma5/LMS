@@ -1,0 +1,45 @@
+.top-students
+{
+    background-color: rgb(255, 252, 249);
+    border-radius: 20px;
+    padding: 1.5rem;
+    align-items: center;
+}
+
+.top-students img
+{
+    width: 30%;
+}
+
+.top-students .row
+{
+    margin-top: 1.5%;
+}
+.students
+{
+    border-radius: 10px;
+    background: white;
+    padding: 0.5rem;
+    left: 4%;
+}
+
+.profile-img
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 2em;
+}
+
+.top-courses
+{
+    border-radius: 20px;
+    padding: 1.5rem;
+    align-items: center;
+}
+
+.top-courses img
+{
+    width: 30%;
+}

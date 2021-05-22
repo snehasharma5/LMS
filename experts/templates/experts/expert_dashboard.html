@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ user.first_name }} | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 top-students">
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="{% static 'web_app/images/dashboard/graduate.png' %}" alt="students.png">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Top Students</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small class="text-muted">Your most enrolled students list</small>
+                </div>
+            </div>
+                {% if students %}
+                    {% for student in students %}
+                        <div class="row">
+                            <div class="col-md-11 students">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        {% if student.profile_pic %}
+                                            <div class="profile-img" style="background: url('{{ student.profile_pic.url }}');"></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-10">
+                                        <a href="{% url 'profile' student.pk %}">
+                                            <h5>{{ student.user.first_name }} {{ student.user.last_name }}</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <small class="text-danger">
+                                            Email-ID: {{ student.user.email }}
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        {% if student.resume %}
+                                            <a href="{{ student.resume.url }}" class="btn btn-outline-warning">
+                                                <i class="fa fa-download" aria-hidden="true"></i>
+                                            </a>
+                                        {% else %}
+                                            <button class="btn btn-outline-secondary" disabled>
+                                                <i class="fa fa-download" aria-hidden="true"></i>
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        </div>
+        <div class="col-md-4 top-courses">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>My Courses</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="{% static 'web_app/images/dashboard/books.png' %}" alt="books.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            My Jobs
+        </div>
+    </div>
+{% endblock %}

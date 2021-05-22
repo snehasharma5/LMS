@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block head %}
+        <title>{{ expert_user.user.first_name }} {{ expert_user.user.last_name }} | Update Profile</title>
+        <link rel="stylesheet" href="{% static 'web_app/styles/profile.css' %}">
+    {% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.pk == expert_user.user.pk %}
+            <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <h4>{{ expert_user.user.first_name }} {{ expert_user.user.last_name }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Personal Details:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Address:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <textarea class="form-control" name="address">{{ expert_user.address }}</textarea>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Education:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Highest Qualification:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="qualification" class="form-control" value="{{ expert_user.qualification }}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Institute Name:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="institute_name" class="form-control" value="{{ expert_user.institute_name }}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Expertise Area:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="expertise_area" class="form-control" value="{{ expert_user.expertise_area }}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Experience:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input type="text" name="experience" class="form-control" value="{{ expert_user.experience }}">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Contact Details:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Mobile Number:</label>
+                        </div>
+                        <div class="col-md-9">
+                                <label>
+                                    <input type="number" name="mobile" value="{{ expert_user.mobile }}" class="form-control">
+                                </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="text-align: center;">
+                    {% if expert_user.profile_pic %}
+                    <img src="{{ expert_user.profile_pic.url }}" alt="profile_pic.jpg" style="width: 50%;">
+                    <div class="custom-file" style="margin-top: 5%;">
+                        <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                        <label class="custom-file-label" for="customFile">{{ expert_user.profile_pic.url }}</label>
+                    </div>
+                {% else %}
+                    <img src="{% static 'web_app/images/profile-user.png' %}" alt="profile_pic.jpg" style="width: 50%;">
+                    <div class="custom-file" style="margin-top: 5%;">
+                        <input type="file" class="custom-file-input" id="customFile" name="profile_pic">
+                        <label class="custom-file-label" for="customFile">Choose Profile Image....</label>
+                    </div>
+                {% endif %}
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Profiles:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Resume</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="custom-file">
+                                {% if expert_user.resume %}
+                              <input type="file" class="custom-file-input" id="customFile" name="resume" value="{{ expert_user.resume.url }}">
+                                {% else %}
+                              <input type="file" class="custom-file-input" id="customFile" name="resume">
+                                {% endif %}
+                              <label class="custom-file-label" for="customFile">Choose Resume....</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>LinkedIn URL:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <label>
+                                <input value="{{ expert_user.linkedIn_url }}" type="text" class="form-control" name="linkedIn_url">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-info" id="update_button">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+        {% else %}
+        <p>You're Not allowed here...</p>
+    {% endif %}
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">Login</a> to Continue..</p>
+    {% endif %}
+{% endblock %}
