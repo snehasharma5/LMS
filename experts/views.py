@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, DetailView, UpdateView
-from web_app.models import RegisterModel, Expert, Student
+from web_app.models import RegisterModel, Expert, Student, CourseModel
 from members.forms import ExpertRegisterForm, ExpertProfileForm, InstituteRegisterForm
 
 
@@ -12,21 +12,6 @@ class ExpertRegisterView(CreateView):
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'expert'
-        return super().get_context_data(**kwargs)
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('home')
-
-
-class InstituteRegisterView(CreateView):
-    model = RegisterModel
-    template_name = 'experts/institute_register.html'
-    form_class = InstituteRegisterForm
-
-    def get_context_data(self, **kwargs):
-        kwargs['user_type'] = 'institute'
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
@@ -64,5 +49,6 @@ class ExpertDashboard(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         students = Student.objects.all()
-        context = {'students': students}
+        courses = CourseModel.objects.all()
+        context = {'students': students, 'courses': courses}
         return context

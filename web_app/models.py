@@ -88,6 +88,7 @@ class Expert(models.Model):
 
 class Institute(models.Model):
     user = models.OneToOneField(RegisterModel, on_delete=models.CASCADE, primary_key=True)
+    icon = models.ImageField(blank=True, null=True, upload_to='images/')
     address = models.TextField(blank=True, null=True)
     contact_no = models.IntegerField(blank=True, null=True)
     mobile_no = models.IntegerField(blank=True, null=True)

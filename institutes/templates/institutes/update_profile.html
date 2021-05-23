@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block head %}
+        <title>{{ institute_user.user.first_name }} | Update Profile</title>
+        <link rel="stylesheet" href="{% static 'web_app/styles/profile.css' %}">
+    {% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.pk == institute_user.user.pk %}
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>{{ institute_user.user.first_name }}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Personal Details:</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_address">Address:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <textarea class="form-control" name="address" id="id_address">{{ institute_user.address }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Contact Details:</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_mobile_no">Mobile Number:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="number" name="mobile_no" value="{{ institute_user.mobile_no }}" class="form-control" id="id_mobile_no">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_contact_no">Landline:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="number" name="contact_no" value="{{ institute_user.contact_no }}" class="form-control" id="id_contact_no">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Profiles:</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_website_url">Website URL:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input value="{{ institute_user.website_url }}" type="text" class="form-control" name="website_url" id="id_website_url">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_linkedIn_url">LinkedIn URL:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input value="{{ institute_user.linkedIn_url }}" type="text" class="form-control" name="linkedIn_url" id="id_linkedIn_url">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="id_facebook_url">Facebook URL:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input value="{{ institute_user.facebook_url }}" type="text" class="form-control" name="facebook_url" id="id_facebook_url">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="text-align: center;">
+                        {% if institute_user.icon %}
+                        <img src="{{ institute_user.icon.url }}" alt="profile_pic.jpg" style="width: 50%;">
+                        <div class="custom-file" style="margin-top: 5%;">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon">
+                            <label class="custom-file-label" for="customFile">{{ institute_user.profile_pic.url }}</label>
+                        </div>
+                    {% else %}
+                        <img src="{% static 'web_app/images/profile-user.png' %}" alt="profile_pic.jpg" style="width: 50%;">
+                        <div class="custom-file" style="margin-top: 5%;">
+                            <input type="file" class="custom-file-input" id="customFile" name="icon">
+                            <label class="custom-file-label" for="customFile">Choose Profile Image....</label>
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-info" id="update_button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        <p>You're Not allowed here...</p>
+        {% endif %}
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">Login</a> to Continue..</p>
+    {% endif %}
+{% endblock %}

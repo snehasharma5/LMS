@@ -29,16 +29,16 @@
                 <li class="active"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp; Home</a></li>
                 {% if user.is_authenticated %}
                     {% if user.is_student %}
-                        <li><a href="{% url 'dashboard' user.first_name user.pk %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                        <li><a href="{% url 'dashboard' user.first_name user.pk %}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% elif user.is_expert %}
-                        <li><a href="{% url 'expert-dashboard' user.first_name user.pk %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                        <li><a href="{% url 'expert-dashboard' user.first_name user.pk %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% elif user.is_institute %}
-                        <li><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                        <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% else %}
-                        <li><a href="/admin/"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
+                        <li><a href="/admin/"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% endif %}
                 {% else %}
-                    <li><a href="{% url 'login' %}"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp; Dasboard</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; Dasboard</a></li>
                 {% endif %}
                 <li><a href="{% url 'inspire' %}"><i class="fa fa-lightbulb" aria-hidden="true"></i>&nbsp;&nbsp; Inspire</a></li>
                 <li><a href="{% url 'aware' %}"><i class='fas fa-broadcast-tower' aria-hidden="true"></i>&nbsp;&nbsp; Aware</a></li>
@@ -85,7 +85,11 @@
                                             </a>
                                         {% elif user.is_expert %}
                                             <a href="{% url 'expert-profile' user.expert.pk %}" class="btn btn-default">
-                                                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                            </a>
+                                        {% elif user.is_institute %}
+                                            <a href="{% url 'institute-profile' user.institute.pk %}" class="btn btn-default">
+                                                <i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
                                             </a>
                                         {% else %}
                                             <a href="/admin/" class="btn btn-default" class="btn btn-deault">

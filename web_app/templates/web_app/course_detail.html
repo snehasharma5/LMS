@@ -7,112 +7,120 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-7">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <h1>{{ course.course_title }}</h1>
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-7">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h1>{{ course.course_title }}</h1>
+                        </div>
+                        <div class="col-md-3">
+                            <small class="text-info">Duration: {{ course.duration }} months</small>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <small class="text-info">Duration: {{ course.duration }} months</small>
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapse1">
-                                            <small class="text-muted">About Course</small>
-                                            <button class="btn btn-default" style="float: right; border-radius: 50%;">
-                                                <i class="fa fa-angle-down text-muted" aria-hidden="true"></i>
-                                            </button>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <small>{{ course.about_course }}</small>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" href="#collapse1">
+                                                <small class="text-muted">About Course</small>
+                                                <button class="btn btn-default" style="float: right; border-radius: 50%;">
+                                                    <i class="fa fa-angle-down text-muted" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <small>{{ course.about_course }}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Recommended Books:
-                                </div>
-                                <div class="panel-body">
-                                    <ul>
-                                        <li>Book Names</li>
-                                    </ul>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Recommended Books:
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li>Book Names</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="course-action">
-                        Price: {{ course.price }}/- INR
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="course-action" id="enroll">
-                        <a href="#">
-                            <i class="fa fa-user-plus"></i> Enroll Now
-                        </a>
-                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h5 class="other-link">Other Links:</h5>
-                </div>
-            </div>
-            <div class="container course-container1">
+            <div class="col-md-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="#">
-                            <button class="btn btn-outline-info" id="other-link-btn">
-                                <i class="fa fa-download" aria-hidden="true"></i>
-                            </button>
-                            Download
-                        </a>
+                        <div class="course-action">
+                            Price: {{ course.price }}/- INR
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <a href="#">
-                            <button class="btn btn-outline-danger" id="other-link-btn">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                            </button>
-                            Experts
-                        </a>
+                    <div class="col-md-6" style="text-align: right;">
+                        {% if user.is_student %}
+                            <div class="course-action" id="enroll">
+                                <a href="#">
+                                    <i class="fa fa-user-plus"></i> Enroll Now
+                                </a>
+                            </div>
+                        {% else %}
+                            <img src="{% static 'web_app/images/online-course.png' %}" alt="course.png" style="width:30%;">
+                        {% endif %}
                     </div>
                 </div>
-                <div class="row" style="margin-top: 2%;">
-                    <div class="col-md-6">
-                        <a href="#">
-                            <button class="btn btn-outline-warning" id="other-link-btn">
-                                <i class="fa fa-university" aria-hidden="true"></i>
-                            </button>
-                            Institutes for course
-                        </a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="other-link">Other Links:</h5>
                     </div>
-                    <div class="col-md-6">
-                        <a href="#">
-                            <button class="btn btn-outline-success" id="other-link-btn">
-                                <i class="fa fa-industry" aria-hidden="true"></i>
-                            </button>
-                            Current Jobs
-                        </a>
+                </div>
+                <div class="container course-container1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#">
+                                <button class="btn btn-outline-info" id="other-link-btn">
+                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                </button>
+                                Download
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#">
+                                <button class="btn btn-outline-danger" id="other-link-btn">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                </button>
+                                Experts
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-6">
+                            <a href="#">
+                                <button class="btn btn-outline-warning" id="other-link-btn">
+                                    <i class="fa fa-university" aria-hidden="true"></i>
+                                </button>
+                                Institutes for course
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#">
+                                <button class="btn btn-outline-success" id="other-link-btn">
+                                    <i class="fa fa-industry" aria-hidden="true"></i>
+                                </button>
+                                Current Jobs
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <h5><a href="{% url 'login' %}">Login</a> to view course..</h5>
+    {% endif %}
 {% endblock %}

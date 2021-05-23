@@ -1,19 +1,25 @@
 .top-students
 {
     background-color: rgb(255, 252, 249);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 1.5rem;
     align-items: center;
 }
 
-.top-students img
+.top-students img, .top-courses img
 {
     width: 30%;
 }
 
-.top-students .row
+.top-students .row, .top-courses .row
 {
-    margin-top: 1.5%;
+    padding: 0.3rem;
+}
+
+.top-students h4, .top-courses h4
+{
+    margin-top: 1.5rem;
+    font-weight: bold;
 }
 .students
 {
@@ -34,12 +40,52 @@
 
 .top-courses
 {
-    border-radius: 20px;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem 1.5rem 2.5rem;
     align-items: center;
+    border-right: 1px solid #f5f5f5;
 }
 
-.top-courses img
+.course-item-div
 {
-    width: 30%;
+    border-left: 5px solid darkslateblue;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    padding: 0.2rem 0.2rem 0.2rem 1.5rem;
 }
+
+.course-detail-btn
+{
+    color: #a5a5a5;
+
+}
+
+.jobs
+{
+    padding: 1.5rem 0 0 1.5rem;
+}
+
+.jobs h3
+{
+    font-weight: bold;
+    color: #ff6624;
+}
+
+.jobs h6
+{
+    color: lightgreen;
+    line-height: 0.1;
+    margin-top: 4%;
+}
+
+.add-jobs
+{
+    color:lightgreen;
+    border-right: 1px solid lightgreen;
+    padding: 0.7rem;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(0,255,0,0.1);
+
+}
+

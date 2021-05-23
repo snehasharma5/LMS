@@ -116,6 +116,13 @@ class ExpertProfileForm(forms.ModelForm):
         fields = ['profile_pic','expertise_area', 'experience', 'resume', 'institute_name', 'qualification', 'linkedIn_url', 'address', 'mobile']
 
 
+class InstituteProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Institute
+        fields = ['icon', 'contact_no', 'website_url', 'facebook_url', 'linkedIn_url', 'address', 'mobile_no']
+
+
 class EditSettingsForm(UserChangeForm):
     first_name= forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
     last_name= forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))

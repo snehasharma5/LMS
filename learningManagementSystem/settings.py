@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'web_app.apps.WebAppConfig',
     'members.apps.MembersConfig',
     'experts.apps.ExpertsConfig',
+    'institutes.apps.InstitutesConfig',
 
 ]
 
