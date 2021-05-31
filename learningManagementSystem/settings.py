@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'members.apps.MembersConfig',
     'experts.apps.ExpertsConfig',
     'institutes.apps.InstitutesConfig',
+    'industries.apps.IndustriesConfig',
 
 ]
 

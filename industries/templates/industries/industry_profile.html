@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block head %}
+        <title>{{ institute_user.user.first_name }} | Profile</title>
+        <link rel="stylesheet" href="{% static 'web_app/styles/profile.css' %}">
+    {% endblock %}
+    {% block content %}
+      <div class="row">
+        <div class="col-md-2">
+          {% if institute_user.icon %}
+              <img src="{{ institute_user.icon.url }}" alt="profile_pic.jpg" id="profile_pic">
+          {% else %}
+              <img src="{% static 'web_app/images/profile-user.png' %}" alt="profile_pic.jpg" id="profile_pic">
+            {% endif %}
+        </div>
+        <div class="col-md-8" id="profile_area">
+            <div class="row">
+                <div class="col-md-12" id="user_name">
+                    <h1>{{ institute_user.user.first_name }}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Contact Details:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Mobile Number:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.mobile_no %}
+                            <label>{{ institute_user.mobile_no }}</label>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Landline:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.contact_no %}
+                            <label>{{ institute_user.contact_no }}</label>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Email ID:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <label>{{ institute_user.user.email }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Personal Details:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Address:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.address %}
+                            <label>{{ institute_user.address }}</label>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Profiles:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Website URL:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.website_url %}
+                            <u><a href="{{ institute_user.website_url }}" style="color:deepskyblue;">{{ institute_user.website_url }}</a></u>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>LinkedIn URL:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.linkedIn_url %}
+                            <u><a href="{{ institute_user.linkedIn_url }}" style="color:deepskyblue;">{{ institute_user.linkedIn_url }}</a></u>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Facebook URL:</label>
+                    </div>
+                    <div class="col-md-9">
+                        {% if institute_user.facebook_url %}
+                            <u><a href="{{ institute_user.facebook_url }}" style="color:deepskyblue;">{{ institute_user.facebook_url }}</a></u>
+                        {% else %}
+                            <label>Not Provided</label>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row imp_btn">
+                <div class="col-md-12">
+                    <a href="{% url 'institute-profile-update' institute_user.pk %}"class="btn btn-info" id="profile_button">Update Profile</a>
+                </div>
+            </div>
+            <div class="row imp_btn">
+                <div class="col-md-12">
+                    <a href="{% url 'user-settings' institute_user.user.pk %}" class="btn btn-info" id="profile_button">Update Settings</a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    {% endblock %}

@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Post Job | Predulive Edutech Foundation </title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/employ.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <h4>Post a Job</h4>
+       <div class="container job-container">
+           <h6>Basic Details:</h6>
+           <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Job Type:</span>
+                    </div>
+                    <input type="text" name="job_type" maxlength="100" required id="id_job_type" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Example: Full time, Part time...">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Job Title:</span>
+                    </div>
+                    <input type="text" name="job_title" maxlength="255" required id="id_job_title" class="form-control" aria-label="Job Title" aria-describedby="inputGroup-sizing-default" placeholder="Enter Job Title Here...">
+                </div>
+            </div>
+        </div>
+           <div class="row">
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Duration:</span>
+                    </div>
+                    <input type="text" name="duration" maxlength="20" id="id_duration" class="form-control" aria-label="Duration" aria-describedby="inputGroup-sizing-default" placeholder="Enter Job Duration..">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Location:</span>
+                    </div>
+                    <input type="text" name="location" maxlength="100" required id="id_location" class="form-control" aria-label="Location" aria-describedby="inputGroup-sizing-default" placeholder="Enter Job Location..">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Stipend:</span>
+                    </div>
+                    <input type="text" name="stipend" maxlength="100" id="id_stipend" class="form-control" aria-label="Stipend" aria-describedby="inputGroup-sizing-default" placeholder="Enter Stipend..">
+                </div>
+            </div>
+        </div>
+       </div>
+        <div class="container job-container">
+            <h6>About Job:</h6>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Job Requirements:</span>
+                        </div>
+                        <input type="text" name="job_requirements" maxlength="500" required id="id_job_requirements" class="form-control" aria-label="Job Requirements" aria-describedby="inputGroup-sizing-default" placeholder="Job Requirements like Python, Java etc..">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Job Description:</span>
+                    </div>
+                    <textarea class="form-control" aria-label="Job Description" name="job_description" cols="40" rows="10" required id="id_job_description"></textarea>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container job-container">
+            <h6>Contact Details:</h6>
+            <div class="row">
+            <div class="col-md-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Contact Mail:</span>
+                    </div>
+                    <input type="email" name="contact_mail" maxlength="254" id="id_contact_mail" class="form-control" aria-label="Contact Email" aria-describedby="inputGroup-sizing-default" placeholder="Enter Contact Mail..">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="inputGroup-sizing-default">@example.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Contact Number:</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">+91</span>
+                        </div>
+                        <input type="number" name="contact_number" maxlength="10" id="id_contact_number" class="form-control" aria-label="Contact Number" aria-describedby="inputGroup-sizing-default" placeholder="Enter Contact Number..">
+                        <div class="input-group-append">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    <button class="btn btn-info job-btn">SUBMIT</button>
+                    <button class="btn btn-default job-btn">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{#    <div class="Mid">#}
+{#        <form class="needs-validation" novalidate method="post" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            <div class="mb-3 mr-5 ml-5" >#}
+{#                <label for="" class="fw-bold mt-5">#}
+{#                    <h4>JOB POST</h4>#}
+{#                </label>#}
+{#            </div>#}
+{#            <div class="mb-3 mr-5 ml-5">#}
+{#                <label for="jobTitle" class="form-label">#}
+{#                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Job Title#}
+{#                </label>#}
+{#                <input type="text" class="form-control" id="jobTitle" placeholder="Enter the job name" required>#}
+{#                <div class="invalid-feedback">#}
+{#                  Please provide the job title.#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="mb-3 mr-5 ml-5">#}
+{#                <label for="companyName" class="form-label">#}
+{#                    <i class="fa fa-briefcase" aria-hidden="true"></i> Company Name#}
+{#                </label>#}
+{#                <input type="text" class="form-control" id="companyName" placeholder="Enter your company name" required>#}
+{#                <div class="invalid-feedback">#}
+{#                    Please provide a valid company name.#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="mb-3 mr-5 ml-5">#}
+{#                <label for="JobRequirements" class="form-label">#}
+{#                    <i class="fa fa-list-alt" aria-hidden="true"></i> Job Requirements#}
+{#                </label>#}
+{#                <input type="text" class="form-control" id="JobRequirements" placeholder="e.g. Python, SQL" required>#}
+{#                <div class="invalid-feedback">#}
+{#                    Please provide job requirements.#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="mb-3 mr-5 ml-5">#}
+{#                <label for="jobDescription" class="form-label">#}
+{#                    <i class="fa fa-tasks" aria-hidden="true"></i> Job Description#}
+{#                </label>#}
+{#                <textarea class="form-control" placeholder="Write about the job in details" id="jobDescription" required></textarea>#}
+{#            </div>#}
+{#            <div class=" row">#}
+{#                <div class="col mb-3 mr-5 ml-5">#}
+{#                    <label for="stipend" class="form-label">#}
+{#                        <i class="fa fa-money" aria-hidden="true"></i> Stipend#}
+{#                    </label>#}
+{#                    <input type="number" class="form-control" id="stipend" placeholder="Enter the amount" required>#}
+{#                </div>#}
+{#                <div class="col  mb-3 mr-5 ml-5">#}
+{#                    <label for="location" class="form-label">#}
+{#                        <i class="fa fa-map-marker" aria-hidden="true"></i> Location#}
+{#                    </label>#}
+{#                    <select class="form-control form-select-lg mb-3" id="location">#}
+{#                        <option value="1">Mumbai</option>#}
+{#                        <option value="2">Pune</option>#}
+{#                        <option value="3">Navi Mumbai</option>#}
+{#                    </select>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <div class=" row">#}
+{#                <div class="col mb-3 mr-5 ml-5">#}
+{#                    <label for="duration" class="form-label">#}
+{#                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Duration#}
+{#                    </label>#}
+{#                    <input type="number" class="form-control" id="duration" placeholder="Duration of the job" required>#}
+{#                </div>#}
+{#                <div class="col  mb-3 mr-5 ml-5">#}
+{#                    <label for="date" class="form-label">#}
+{#                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Date#}
+{#                    </label>#}
+{#                    <input type="date" class="form-control" id="date" placeholder="Date" required>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col d-flex justify-content-end mb-5 mr-5 ml-5">#}
+{#                    <button class="btn btn-primary" type="submit">Save Details</button>#}
+{#                </div>#}
+{#                <div class="col  d-flex justify-content-start mb-5 mr-5 ml-5">#}
+{#                    <button class="btn btn-primary" type="submit">Apply Now</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{% endblock %}

@@ -145,16 +145,18 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div class="row imp_btn">
-                <div class="col-md-12">
-                    <a href="{% url 'expert-profile-update' expert_user.pk %}"class="btn btn-info" id="profile_button">Update Profile</a>
+            {% if user.pk == expert_user.user.pk %}
+                <div class="row imp_btn">
+                    <div class="col-md-12">
+                        <a href="{% url 'expert-profile-update' expert_user.pk %}"class="btn btn-info" id="profile_button">Update Profile</a>
+                    </div>
                 </div>
-            </div>
-            <div class="row imp_btn">
-                <div class="col-md-12">
-                    <a href="{% url 'user-settings' expert_user.user.pk %}" class="btn btn-info" id="profile_button">Update Settings</a>
+                <div class="row imp_btn">
+                    <div class="col-md-12">
+                        <a href="{% url 'user-settings' expert_user.user.pk %}" class="btn btn-info" id="profile_button">Update Settings</a>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
       </div>
 

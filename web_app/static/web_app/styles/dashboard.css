@@ -89,3 +89,100 @@
 
 }
 
+.expert-img
+{
+    width: 100%;
+}
+
+.action
+{
+    align-items: center;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.action h4
+{
+    text-align: left;
+    font-weight: bolder;
+}
+
+.action img
+{
+    width:60%;
+    border-radius: 5px;
+}
+
+.div-group
+{
+    text-align: left;
+}
+
+.action h6
+{
+    line-height: 0.1;
+    margin-top: 3%;
+}
+
+.expert-container, .institute-container, .industry-container
+{
+    padding: 1rem 0 1rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 200, 0.5);
+    margin-top: 2%;
+    height:50%;
+}
+
+.institute-container
+{
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.industry-container
+{
+    background: white;
+}
+
+.color-white
+{
+    background: white;
+    padding:0.2rem;
+
+}
+
+.notification
+{
+    border-left: 1px solid #f5f5f5;
+    overflow: auto;
+}
+
+.job-notification
+{
+    padding:1rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.notification h5
+{
+    margin-bottom: 2%;
+    margin-top: 1%;
+    color: indigo;
+}
+
+.add-job-link
+{
+    width:100%;
+
+}
+
+.all-jobs
+{
+    width: 100%;
+}
+
+.action-btn
+{
+    width: 90%;
+    margin-top:3%;
+    bottom:0;
+}

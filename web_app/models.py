@@ -103,6 +103,24 @@ class Institute(models.Model):
         return reverse('expert-profile', args=(str(self.pk)))
 
 
+class Industry(models.Model):
+    user = models.OneToOneField(RegisterModel, on_delete=models.CASCADE, primary_key=True)
+    industry_type = models.CharField(max_length=255, blank=True, null=True)
+    icon = models.ImageField(blank=True, null=True, upload_to='images/')
+    address = models.TextField(blank=True, null=True)
+    contact_no = models.IntegerField(blank=True, null=True)
+    mobile_no = models.IntegerField(blank=True, null=True)
+    website_url = models.CharField(max_length=255, blank=True, null=True)
+    linkedIn_url = models.CharField(max_length=255, blank=True, null=True)
+    facebook_url = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('expert-profile', args=(str(self.pk)))
+
+
 class CareerCounsellingFormModel(models.Model):
     user = models.OneToOneField(RegisterModel, on_delete=models.CASCADE)
     passion = models.CharField(max_length=1000)
@@ -157,6 +175,26 @@ class CourseCategoryModel(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('home')
+
+
+class JobModel(models.Model):
+    user = models.ForeignKey(RegisterModel, on_delete=models.CASCADE)
+    job_type = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=255)
+    job_requirements = models.CharField(max_length=500)
+    job_description = models.TextField()
+    stipend = models.CharField(max_length=100, null=True, blank=True)
+    location = models.CharField(max_length=100)
+    contact_mail = models.EmailField(null=True, blank=True)
+    duration = models.CharField(max_length=20, null=True, blank=True)
+    date_of_posting = models.DateTimeField(default=timezone.now)
+    contact_number = models.CharField(max_length=10, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user) + " | " + self.job_title + " | " + self.job_type
 
     def get_absolute_url(self):
         return reverse('home')

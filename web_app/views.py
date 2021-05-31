@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView, TemplateView, CreateView
 from .models import RegisterModel, CourseModel, CourseCategoryModel
-from .models import CareerCounsellingFormModel, VideoModel
-from .forms import CareerCounsellingForm, VideoUploadingForm, AddCourseForm
+from .models import CareerCounsellingFormModel, VideoModel, JobModel
+from .forms import CareerCounsellingForm, VideoUploadingForm, AddCourseForm, JobPostForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
@@ -28,6 +28,7 @@ class AwareView(TemplateView):
     template_name = 'web_app/aware.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class CareerCounsellingFormView(CreateView):
     model = CareerCounsellingFormModel
     form_class = CareerCounsellingForm
@@ -44,6 +45,7 @@ class InspireView(ListView):
     template_name = 'web_app/inspire.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class VideoUploadingFormView(CreateView):
     model = VideoModel
     form_class = VideoUploadingForm
@@ -54,6 +56,7 @@ class VideoUploadingFormView(CreateView):
         return super().form_valid(form)
 
 
+@method_decorator(login_required, name='dispatch')
 class AddCourseView(CreateView):
     model = CourseModel
     template_name = 'web_app/add_course_form.html'
@@ -61,6 +64,7 @@ class AddCourseView(CreateView):
     success_url = reverse_lazy('home')
 
 
+@method_decorator(login_required, name='dispatch')
 class CourseDetailView(DetailView):
     model = CourseModel
     template_name = 'web_app/course_detail.html'
@@ -77,6 +81,7 @@ class EducateView(ListView):
     template_name = 'web_app/educate.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class AllCourseView(ListView):
     model = CourseModel
     template_name = 'web_app/all_courses.html'
@@ -85,4 +90,27 @@ class AllCourseView(ListView):
         context = super(AllCourseView, self).get_context_data(*args, **kwargs)
         category_item = CourseCategoryModel.objects.all()
         context['category'] = category_item
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+class JobPostView(CreateView):
+    model = JobModel
+    template_name = "web_app/job_post.html"
+    form_class = JobPostForm
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+class JobDetailView(DetailView):
+    model = JobModel
+    template_name = 'web_app/job_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(JobDetailView, self).get_context_data(*args, **kwargs)
+        job = get_object_or_404(JobModel, id=self.kwargs['pk'])
+        context['job'] = job
         return context

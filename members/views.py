@@ -1,9 +1,11 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, TemplateView, ListView
 from .forms import StudentRegisterForm, ProfileForm, EditSettingsForm, ExpertRegisterForm
-from web_app.models import RegisterModel, Student, CourseModel
+from web_app.models import RegisterModel, Student, CourseModel, Expert, VideoModel, JobModel, Institute, Industry
 
 
 class RegisterChoice(ListView):
@@ -63,16 +65,35 @@ class UpdateProfilePage(UpdateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class DashboardView(DetailView):
     model = RegisterModel
     template_name = 'registration/student_dashboard.html'
 
+    def get_context_data(self, *args, **kwargs):
+        experts = Expert.objects.all()[0:3]
+        institutes = Institute.objects.all()[0:3]
+        industries = Industry.objects.all()[0:3]
+        jobs = JobModel.objects.all().order_by('-date_of_posting')[0:7]
+        context = {'experts': experts, 'jobs': jobs, 'institutes':institutes, 'industries':industries}
+        return context
 
-class StudentCourseView(DetailView):
+
+class StudentCourseView(ListView):
     model = CourseModel
     template_name = 'registration/student_course_details.html'
 
     def get_context_data(self, **kwargs):
         all_courses = CourseModel.objects.filter(enrolled_students=self.request.user)
         context = {'all_courses':all_courses}
+        return context
+
+
+class StudentVideoView(ListView):
+    model = VideoModel
+    template_name = 'registration/student_video_details.html'
+
+    def get_context_data(self, **kwargs):
+        all_videos = VideoModel.objects.filter(user=self.request.user)
+        context = {'all_videos':all_videos}
         return context

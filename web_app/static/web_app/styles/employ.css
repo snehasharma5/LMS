@@ -1,0 +1,12 @@
+.job-container
+{
+    padding:1rem;
+    box-shadow: 0.5px 0.5px 1px 0.5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top: 1%;
+}
+
+.job-btn
+{
+    width:20%;
+}

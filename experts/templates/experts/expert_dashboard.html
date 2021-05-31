@@ -7,112 +7,119 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-4 top-students">
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <img src="{% static 'web_app/images/dashboard/graduate.png' %}" alt="students.png">
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-4 top-students">
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center;">
+                        <img src="{% static 'web_app/images/dashboard/graduate.png' %}" alt="students.png">
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Top Students</h4>
-                    <small class="text-muted">Your most enrolled students list</small>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Top Students</h4>
+                        <small class="text-muted">Your most enrolled students list</small>
+                    </div>
                 </div>
-            </div>
-            {% if students %}
-                    {% for student in students %}
-                        <div class="row">
-                            <div class="col-md-11 students">
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <a href="{% url 'profile' student.pk %}">
-                                            <div>
-                                                <h5>{{ student.user.first_name }} {{ student.user.last_name }}</h5>
-                                                <small class="text-danger">
-                                                    Email-ID: {{ student.user.email }}
-                                                </small>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        {% if student.resume %}
-                                            <a href="{{ student.resume.url }}">
-                                                <small class="text-info">Resume</small>
+                {% if students %}
+                        {% for student in students %}
+                            <div class="row">
+                                <div class="col-md-11 students">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <a href="{% url 'profile' student.pk %}">
+                                                <div>
+                                                    <h5>{{ student.user.first_name }} {{ student.user.last_name }}</h5>
+                                                    <small class="text-danger">
+                                                        Email-ID: {{ student.user.email }}
+                                                    </small>
+                                                </div>
                                             </a>
-                                        {% else %}
-                                            <a disabled>
-                                                <small class="text-muted">Resume</small>
-                                            </a>
-                                        {% endif %}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {% if student.resume %}
+                                                <a href="{{ student.resume.url }}">
+                                                    <small class="text-info">Resume</small>
+                                                </a>
+                                            {% else %}
+                                                <a disabled>
+                                                    <small class="text-muted">Resume</small>
+                                                </a>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                <div class="row">
+                    <div class="col-md-12" style="text-align: right;">
+                        <a class="btn btn-outline-danger" href="#">
+                            All Students
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 top-courses">
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center;">
+                        <img src="{% static 'web_app/images/dashboard/book.png' %}" alt="books.png">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-8">
+                        <h4>My Courses</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'add-course' %}" class="btn btn-outline-info btn-sm" style="margin-top:1.5rem;">
+                            + course
+                        </a>
+                    </div>
+                </div>
+                {% if courses %}
+                    {% for course in courses %}
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="course-item-div">
+                                    <h6>{{ course.course_title }}</h6>
+                                    <small class="text-muted">Price: {{ course.price }} INR | Duration: {{ course.duration }} month(s)</small>
+                                </div>
+                            </div>
+                            <div class="col-md-2" style="padding: 1rem;">
+                                <a href="{% url 'course-detail' course.pk %}">
+                                    <i class="fa fa-angle-right course-detail-btn" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
                 {% endif %}
+                <div class="row">
+                    <div class="col-md-12" style="text-align: right;">
+                        <a class="btn btn-outline-primary" href="#">
+                            All Courses
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 jobs">
 
-            <div class="row">
-                <div class="col-md-12" style="text-align: right;">
-                    <a class="btn btn-outline-danger" href="#">
-                        All Students
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 top-courses">
-            <div class="row">
-                <div class="col-md-12" style="text-align: center;">
-                    <img src="{% static 'web_app/images/dashboard/book.png' %}" alt="books.png">
-                </div>
-            </div>
-            <div class="row" style="margin-bottom: 20px;">
-                <div class="col-md-8">
-                    <h4>My Courses</h4>
-                </div>
-                <div class="col-md-4">
-                    <a href="{% url 'add-course' %}" class="btn btn-outline-info btn-sm" style="margin-top:1.5rem;">
-                        + course
-                    </a>
-                </div>
-            </div>
-            {% if courses %}
-                {% for course in courses %}
+                <h3>Job<u>s</u></h3>
+                <a href="{% url 'job-post' user.expert.pk %}" class="add-job-link">
                     <div class="row">
-                        <div class="col-md-10">
-                            <div class="course-item-div">
-                                <h6>{{ course.course_title }}</h6>
-                                <small class="text-muted">Price: {{ course.price }} INR | Duration: {{ course.duration }} month(s)</small>
-                            </div>
+                        <div class="col-md-3">
+                            <div class="add-jobs">+</div>
                         </div>
-                        <div class="col-md-2" style="padding: 1rem;">
-                            <a href="{% url 'course-detail' course.pk %}">
-                                <i class="fa fa-angle-right course-detail-btn" aria-hidden="true"></i>
-                            </a>
+                        <div class="col-md-9">
+                            <h6>Add New Job</h6>
+                            <small class="text-muted">(post your new job here.)</small>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-            <div class="row">
-                <div class="col-md-12" style="text-align: right;">
-                    <a class="btn btn-outline-primary" href="#">
-                        All Courses
-                    </a>
-                </div>
+                </a>
             </div>
         </div>
-        <div class="col-md-4 jobs">
-
-            <h3>Job<u>s</u></h3>
-            <div class="row" style="padding: 2rem 0 0 2rem;">
-                <div class="col-md-3">
-                    <div class="add-jobs">+</div>
-                </div>
-                <div class="col-md-9">
-                    <h6>Add New Job</h6>
-                    <small class="text-muted">(post your new job here.)</small>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% else %}
+        <h4>You're not allowed here</h4>
+        <a href="{% url 'login' %}">Login</a> to continue....
+    {% endif %}
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ user.first_name }} {{ user.last_name }} | Videos</title>
+{% endblock %}
+
+{% block content %}
+    {% if all_videos %}
+        <ul>
+        {% for video in all_videos %}
+            <li>{{ video.title }}</li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No videos found</p>
+    {% endif %}
+{% endblock %}

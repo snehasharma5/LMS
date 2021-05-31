@@ -10,7 +10,7 @@
     {% block head %}
         <title>Predulive Edutech Foundation</title>
     {% endblock %}
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/6633cf770c.js" crossorigin="anonymous"></script>
     <link rel="icon" href="{% static 'web_app/images/logo.png' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'web_app/styles/sidebar.css' %}">
@@ -34,6 +34,8 @@
                         <li><a href="{% url 'expert-dashboard' user.first_name user.pk %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% elif user.is_institute %}
                         <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                    {% elif user.is_industry %}
+                        <li><a href="#"><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% else %}
                         <li><a href="/admin/"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% endif %}
@@ -89,6 +91,10 @@
                                             </a>
                                         {% elif user.is_institute %}
                                             <a href="{% url 'institute-profile' user.institute.pk %}" class="btn btn-default">
+                                                <i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
+                                            </a>
+                                        {% elif user.is_industry %}
+                                            <a href="{% url 'industry-profile' user.industry.pk %}" class="btn btn-default">
                                                 <i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }} {{ user.last_name }}
                                             </a>
                                         {% else %}

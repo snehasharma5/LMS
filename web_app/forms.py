@@ -1,5 +1,5 @@
 from django import forms
-from .models import CareerCounsellingFormModel, VideoModel, CourseModel
+from .models import CareerCounsellingFormModel, VideoModel, CourseModel, JobModel
 
 
 class CareerCounsellingForm(forms.ModelForm):
@@ -18,5 +18,12 @@ class AddCourseForm(forms.ModelForm):
 
     class Meta:
         model = CourseModel
-        fields = ['course_title', 'category', 'short_intro', 'about_course', 'course_icon', 'course_file', 'duration','price']
+        fields = ['course_title', 'category', 'short_intro', 'about_course', 'course_icon', 'course_file',
+                  'duration', 'price']
 
+
+class JobPostForm(forms.ModelForm):
+    class Meta:
+        model = JobModel
+        fields = ['job_type', 'job_title', 'job_requirements', 'job_description', 'stipend', 'location',
+                  'contact_mail', 'duration', 'contact_number']
