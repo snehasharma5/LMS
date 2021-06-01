@@ -50,7 +50,7 @@
                         </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                                 <div class="row form_row">
                                     <div class="col-md-6">
@@ -70,10 +70,10 @@
                                 </div>
                                 <div class="row form_row">
                                     <div class="col-md-12">
-                                        <input type="text" name="institute_name" class="form-control" required id="id_institute_name" value="#" hidden>
-                                        <input type="text" name="qualification" class="form-control" required id="id_qualification" value="#" hidden>
-                                        <input type="text" name="expertise_area" class="form-control" required id="id_expertise_area" value="#" hidden>
-                                        <input type="text" name="experience" class="form-control" required id="id_experience" value="#" hidden>
+                                        <input type="text" name="institute_name" class="form-control"  id="id_institute_name" value="#" hidden>
+                                        <input type="text" name="qualification" class="form-control"  id="id_qualification" value="#" hidden>
+                                        <input type="text" name="expertise_area" class="form-control"  id="id_expertise_area" value="#" hidden>
+                                        <input type="text" name="experience" class="form-control" id="id_experience" value="0" hidden>
                                     </div>
                                 </div>
                                 <div class="row form_row">

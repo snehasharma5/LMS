@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, TemplateView, ListView
-from .forms import StudentRegisterForm, ProfileForm, EditSettingsForm, ExpertRegisterForm
+from .forms import StudentRegisterForm, ProfileForm, EditSettingsForm
 from web_app.models import RegisterModel, Student, CourseModel, Expert, VideoModel, JobModel, Institute, Industry
 
 

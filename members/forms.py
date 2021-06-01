@@ -13,10 +13,12 @@ class StudentRegisterForm(UserCreationForm):
 
     class Meta:
         model = RegisterModel
-        fields = ['first_name', 'last_name', 'date_of_birth', 'institute_name', 'qualification', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'date_of_birth', 'institute_name', 'qualification', 'email', 'password1'
+            , 'password2']
 
     @transaction.atomic
     def save(self):
+
         user = super().save(commit=False)
         user.is_student = True
         user.first_name= self.cleaned_data.get('first_name')
@@ -60,6 +62,7 @@ class ExpertRegisterForm(UserCreationForm):
         expert.institute_name=self.cleaned_data.get('institute_name')
         expert.qualification=self.cleaned_data.get('qualification')
         expert.expertise_area=self.cleaned_data.get('expertise_area')
+        expert.experience=self.cleaned_data.get('experience')
         return user
 
     def __init__(self, *args, **kwargs):
@@ -145,7 +148,8 @@ class ExpertProfileForm(forms.ModelForm):
 
     class Meta:
         model = Expert
-        fields = ['profile_pic','expertise_area', 'experience', 'resume', 'institute_name', 'qualification', 'linkedIn_url', 'address', 'mobile']
+        fields = ['profile_pic','expertise_area', 'experience', 'resume', 'institute_name', 'qualification'
+            , 'linkedIn_url', 'address', 'mobile']
 
 
 class InstituteProfileForm(forms.ModelForm):
