@@ -116,6 +116,25 @@
                         </div>
                     </div>
                 </a>
+                {% if jobs %}
+                    {% for job in jobs %}
+                        <a href="{% url 'job-detail' job.pk %}">
+                            <div class="row job-notification">
+                                <div class="col-md-2" style="background: url('{% static 'web_app/images/dashboard/user-job.png' %}') center; background-size: cover;">
+                                </div>
+                                <div class="col-md-10">
+                                    <h6>{{ job.job_title }}</h6>
+                                    <small class="text-muted">Stipend : {{ job.stipend }}</small>
+                                    <br>
+                                    <small class="text-muted">Job Requirements : {{ job.job_requirements|slice:"0:30" }}</small>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                        <a href="#" class="btn btn-info all-jobs" style="margin-top:2%;">View All Jobs</a>
+                    {% else %}
+                        <h6>No Jobs Posted By You...</h6>
+                    {% endif %}
             </div>
         </div>
     {% else %}

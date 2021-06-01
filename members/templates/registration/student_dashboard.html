@@ -90,12 +90,14 @@
                                 </div>
                             </a>
                         {% endfor %}
-                    {% endif %}
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-12">
                             <a href="#" class="btn btn-outline-danger action-btn">See All Experts</a>
                         </div>
                     </div>
+                    {% else %}
+                        <h6>No Experts Found</h6>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-4 action">
@@ -125,12 +127,14 @@
                                 </div>
                             </a>
                         {% endfor %}
-                    {% endif %}
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-12">
                             <a href="#" class="btn btn-outline-success action-btn">See All Institutes</a>
                         </div>
                     </div>
+                    {% else %}
+                        <h6>No Institutes Found</h6>
+                    {% endif %}
                 </div>
                 <div class="container industry-container">
                     <div class="row">
@@ -158,12 +162,14 @@
                                 </div>
                             </a>
                         {% endfor %}
-                    {% endif %}
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-12">
                             <a href="#" class="btn btn-outline-danger action-btn">See All Experts</a>
                         </div>
                     </div>
+                    {% else %}
+                        <h6>No Industries Found</h6>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-4 action notification">
@@ -172,23 +178,23 @@
                     <h5>Latest Jobs</h5>
                     {% if jobs %}
                         {% for job in jobs %}
-                            <div class="row job-notification">
-                                <div class="col-md-2" style="background: url('{% static 'web_app/images/dashboard/user-job.png' %}') center; background-size: cover;">
-                                </div>
-                                <div class="col-md-10">
-                                    <a href="{% url 'job-detail' job.pk %}">
+                            <a href="{% url 'job-detail' job.pk %}">
+                                <div class="row job-notification">
+                                    <div class="col-md-2" style="background: url('{% static 'web_app/images/dashboard/user-job.png' %}') center; background-size: cover;">
+                                    </div>
+                                    <div class="col-md-10">
                                         <h6>{{ job.job_title }}</h6>
-                                    </a>
-                                    <small class="text-muted">Stipend : {{ job.stipend }}</small>
-                                    <br>
-                                    <small class="text-muted">Posted By : {{ job.user.first_name }} {{ job.user.last_name }}</small>
+                                        <small class="text-muted">Stipend : {{ job.stipend }}</small>
+                                        <br>
+                                        <small class="text-muted">Posted By : {{ job.user.first_name }} {{ job.user.last_name }}</small>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         {% endfor %}
+                        <a href="#" class="btn btn-info all-jobs" style="margin-top:2%;">View All Jobs</a>
                     {% else %}
                         <h6>No Jobs Found</h6>
                     {% endif %}
-                    <a href="#" class="btn btn-info all-jobs">View All Jobs</a>
                 </div>
             </div>
         </div>
