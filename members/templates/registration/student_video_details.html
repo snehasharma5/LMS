@@ -10,6 +10,7 @@
         <ul>
         {% for video in all_videos %}
             <li>{{ video.title }}</li>
+            <video src="{{ video.video.url }}"></video>
         {% endfor %}
         </ul>
         {% else %}

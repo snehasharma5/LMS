@@ -184,4 +184,17 @@
 .student-img
 {
     width: 100%;
+    border-radius: 50%;
+    border: 2px solid #e5e5e5;
+}
+
+.student-detail
+{
+    padding:0.5rem;
+    border-radius: 10px;
+}
+
+.student-detail:hover
+{
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
 }
