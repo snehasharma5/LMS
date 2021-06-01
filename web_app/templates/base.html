@@ -33,7 +33,7 @@
                     {% elif user.is_expert %}
                         <li><a href="{% url 'expert-dashboard' user.first_name user.pk %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% elif user.is_institute %}
-                        <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                        <li><a href="{% url 'institute-dashboard' user.pk %}"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% elif user.is_industry %}
                         <li><a href="#"><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% else %}

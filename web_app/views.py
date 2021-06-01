@@ -114,3 +114,14 @@ class JobDetailView(DetailView):
         job = get_object_or_404(JobModel, id=self.kwargs['pk'])
         context['job'] = job
         return context
+
+
+@method_decorator(login_required, name='dispatch')
+class AllJobsView(ListView):
+    model = JobModel
+    template_name = 'web_app/all_jobs.html'
+
+    def get_context_data(self, *args, **kwargs):
+        all_jobs = JobModel.objects.all()
+        context = {'all_jobs': all_jobs}
+        return context

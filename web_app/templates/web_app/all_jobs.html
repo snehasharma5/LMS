@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>All Jobs | Predulive Edutech Foundation</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/employ.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if all_jobs %}
+        {% for job in all_jobs %}
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="#">
+                        <h6>{{ job.job_title }}</h6>
+                    </a>
+                    <small class="text-muted">Posted By: {{ job.user.first_name }} {{ job.user.last_name }}
+                        Date of Posting : {{ job.date_of_posting }}</small><br>
+                    <small class="text-info">Requirements : {{ job.job_requirements }}</small><br>
+                    <small class="text-success">Stipend : {{ job.stipend }}</small><br>
+                </div>
+                <div class="col-md-4">
+                    {% if user.is_student %}
+                        <a href="#" class="btn btn-info">Apply Now</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <h6>No Jobs Found</h6>
+    {% endif %}
+{% endblock %}
