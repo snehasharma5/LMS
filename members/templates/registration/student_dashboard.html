@@ -112,10 +112,10 @@
                         {% for institute in institutes %}
                             <a href="{% url 'institute-profile' institute.pk %}">
                                 <div class="row" style="margin-left:1.5%;">
-                                {% if expert.profile_pic %}
+                                {% if institute.icon %}
                                     <div class="col-md-2 expert-img" style="background: url('{{ institute.icon.url }}') center;background-size: cover;"></div>
                                     {% else %}
-                                    <div class="col-md-2 expert-img" style="background: url('{% static 'web_app/images/dashboard/user.png' %}') center;background-size: cover;"></div>
+                                    <div class="col-md-2 expert-img" style="background: url('{% static 'web_app/images/school.png' %}') center;background-size: cover;"></div>
                                     {% endif %}
                                     <div class="col-md-9 color-white">
                                         <h6>{{ institute.user.first_name|slice:"0:30" }}..</h6>
@@ -148,7 +148,7 @@
                                 {% if industry.icon %}
                                     <div class="col-md-2 expert-img" style="background: url('{{ industry.icon.url }}') center;background-size: cover;"></div>
                                     {% else %}
-                                    <div class="col-md-2 expert-img" style="background: url('{% static 'web_app/images/dashboard/user.png' %}') center;background-size: cover;"></div>
+                                    <div class="col-md-2 expert-img" style="background: url('{% static 'web_app/images/industry.png' %}') center;background-size: cover;"></div>
                                     {% endif %}
                                     <div class="col-md-9 color-white">
                                         <h6>{{ industry.user.first_name }}</h6>

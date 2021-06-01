@@ -128,20 +128,15 @@
 {
     padding: 1rem 0 1rem 1rem;
     border-radius: 20px;
-    background: rgba(255, 255, 200, 0.5);
     margin-top: 2%;
     height:50%;
 }
 
-.institute-container
-{
-    background: rgba(0, 255, 0, 0.1);
-}
 
-.industry-container
+.expert-container
 {
-    background: white;
-}
+    background: rgba(255, 255, 200, 0.5);
+    }
 
 .color-white
 {
