@@ -135,6 +135,27 @@
 
 .expert-name
 {
-    text-align: center;
-    padding: 2rem;
+    text-align:left;
+    padding: 0.5rem;
+}
+
+.expert-img
+{
+    background-size: cover;
+    border-radius: 50%;
+    border:2px solid #fafafa;
+    width: 100%;
+    background-position: center;
+}
+
+.expert-div{
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding:1rem;
+}
+
+.expert-div h6
+{
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom:2%;
 }

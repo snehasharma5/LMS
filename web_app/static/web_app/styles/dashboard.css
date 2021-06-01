@@ -128,14 +128,13 @@
 {
     padding: 1rem 0 1rem 1rem;
     border-radius: 20px;
-    margin-top: 2%;
-    height:50%;
 }
 
 
 .expert-container
 {
     background: rgba(255, 255, 200, 0.5);
+    margin-top: 2%;
     }
 
 .color-white

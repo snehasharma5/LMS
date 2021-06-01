@@ -1,5 +1,7 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, ListView
 from web_app.models import RegisterModel, Expert, Student, CourseModel, JobModel
 from members.forms import ExpertRegisterForm, ExpertProfileForm, InstituteRegisterForm
@@ -20,6 +22,7 @@ class ExpertRegisterView(CreateView):
         return redirect('home')
 
 
+@method_decorator(login_required, name='dispatch')
 class ShowProfilePage(DetailView):
     model = Expert
     template_name = 'experts/expert_profile.html'
@@ -31,6 +34,7 @@ class ShowProfilePage(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class ExpertUpdateProfilePage(UpdateView):
     model = Expert
     form_class = ExpertProfileForm
@@ -43,6 +47,7 @@ class ExpertUpdateProfilePage(UpdateView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class ExpertDashboard(DetailView):
     model = Expert
     template_name = 'experts/expert_dashboard.html'
@@ -55,6 +60,7 @@ class ExpertDashboard(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class AllExpertsView(ListView):
     model = Expert
     template_name = 'experts/all_experts.html'

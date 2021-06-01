@@ -7,17 +7,32 @@
 
 {% block content %}
     <div class="row">
+        <div class="col-md-12">
+            <h3>All Experts</h3>
+        </div>
+    </div>
+    <div class="row">
         {% if all_experts %}
             {% for expert in all_experts %}
-                <div class="col-md-4">
-                    <div class="row">
-                        {% if expert.profile_pic %}
-                            <div class="col-md-3" style="background: url('{{ expert.profile_pic.url }}') center; background-size: cover;"></div>
-                        {% else %}
-                            <div class="col-md-3" style="background: url('{% static 'web_app/images/dashboard/user.png' %}') center; background-size: cover;"></div>
-                        {% endif %}
-                        <div class="col-md-9">
-                            <h6 class="expert-name">{{ expert.user.first_name }} {{ expert.user.last_name }}</h6>
+                <div class="col-md-4" style="margin-top:2%;">
+                    <div class="expert-div">
+                        <div class="row">
+                            {% if expert.profile_pic %}
+                                <div class="col-md-3">
+                                    <img class="expert-img" src="{{ expert.profile_pic.url }}" alt="Expert.png">
+                                </div>
+                            {% else %}
+                                <div class="col-md-3">
+                                    <img class="expert-img" src="{% static 'web_app/images/dashboard/user.png' %}" alt="Expert.png">
+                                </div>
+                            {% endif %}
+                            <div class="col-md-9 expert-name">
+                                <h6>{{ expert.user.first_name }} {{ expert.user.last_name }}</h6>
+                                <small class="text-muted">Email-ID : {{ expert.user.email }}</small><br>
+                                <small>Expertise Area : {{ expert.expertise_area }}</small><br>
+                                <small>Experience : {{ expert.experience }} years</small>
+                                <small class="text-info"><a href="{{ expert.linkedIn_url }}">LinkedIn</a></small>
+                            </div>
                         </div>
                     </div>
                 </div>
