@@ -35,7 +35,7 @@
                     {% elif user.is_institute %}
                         <li><a href="{% url 'institute-dashboard' user.pk %}"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% elif user.is_industry %}
-                        <li><a href="#"><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
+                        <li><a href="{% url 'industry-dashboard' user.pk %}"><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a></li>
                     {% else %}
                         <li><a href="/admin/"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; {{ user.first_name }}'s Dashboard</a></li>
                     {% endif %}

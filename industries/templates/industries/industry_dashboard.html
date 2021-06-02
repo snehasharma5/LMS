@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>{{ user.first_name }} | Dashboard</title>
+    <link rel="stylesheet" href="{% static 'web_app/styles/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Top Students</h4>
+            {% if students %}
+                {% for student in students %}
+                    <a href="{% url 'profile' student.user.pk %}">
+                        <div class="row student-detail">
+                            <div class="col-md-3">
+                                {% if student.profile_pic %}
+                                    <img class="student-img" src="{{ student.profile_pic.url }}" alt="student.png">
+                                {% else %}
+                                    <img class="student-img" src="{% static 'web_app/images/dashboard/student.png' %}" alt="student.png">
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9">
+                                <h6>{{ student.user.first_name }} {{ student.user.last_name }}</h6>
+                                <small class="text-muted">Email-ID : {{ student.user.email }}</small><br>
+                                <small class="text-warning">Institute Name: {{ student.institute_name }}</small>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                <button class="btn btn-outline-warning" style="margin-top: 2%;width:100%;">All Students</button>
+            {% endif %}
+        </div>
+        <div class="col-md-4 top-courses">
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center;">
+                        <img src="{% static 'web_app/images/dashboard/job-search.png' %}" alt="books.png">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-8">
+                        <h4 style="color:#ff6624;">Jobs</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'job-post' user.pk %}" class="btn btn-outline-info btn-sm" style="margin-top:1.5rem;">
+                            + job
+                        </a>
+                    </div>
+                </div>
+                {% if all_jobs %}
+                    {% for job in all_jobs %}
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="course-item-div">
+                                    <h6>{{ job.job_title }}</h6>
+                                    <small class="text-muted">Stipend : {{ job.stipend }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-2" style="padding: 1rem;">
+                                <a href="{% url 'job-detail' job.pk %}">
+                                    <i class="fa fa-angle-right course-detail-btn" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-12" style="text-align: right;">
+                        <a class="btn btn-outline-primary" href="#">
+                            All Jobs
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}
