@@ -8,93 +8,100 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-8 course-form-div">
+        <div class="col-md-12">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-12">
-                        <h5>Add New Course</h5>
+                        <h4>Add New <u>Course</u></h4>
+                    </div>
+                </div>
+                <div class="container add-course-container">
+                    <h5>Basic Details</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Course Title:</span>
+                                </div>
+                                <input type="text" name="course_title" maxlength="500" required id="id_course_title" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Enter Course Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Course Icon:</span>
+                                </div>
+                                <input type="file" name="course_icon" id="id_course_icon" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Category:</span>
+                                </div>
+                                <input type="text" name="category" maxlength="500" required id="id_course_category" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Category like CS or IT">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Course File:</span>
+                                </div>
+                                <input type="file" name="course_file" id="id_course_file" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Course Amount:</span>
+                                </div>
+                                <input type="text" name="price" required id="id_price" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Price in INR">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Course Duration:</span>
+                                </div>
+                                <input type="text" name="duration" required id="id_duration" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Course Duration in months">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container add-course-container">
+                    <h5>Course Information</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Short Introduction:</span>
+                                </div>
+                                <input type="text" name="short_intro" maxlength="500" required id="id_short_intro" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Enter Short Detail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">About Course:</span>
+                                </div>
+                                <textarea name="about_course" cols="40" rows="10" required id="id_about_course" class="form-control" aria-label="Job Type" aria-describedby="inputGroup-sizing-default" placeholder="Write about course"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_course_title">
-                                    Course Title:
-                                </label>
-                                <input type="text" name="course_title" class="form-control" placeholder="Enter Course Name" maxlength="500" required id="id_course_title">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_course_category">
-                                    Course Category:
-                                </label>
-                                <input type="text" name="category" class="form-control" placeholder="Enter Category" maxlength="500" required id="id_course_category">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_short_intro">
-                                    Short Introduction about Course:
-                                </label>
-                                <input type="text" name="short_intro" value="Write short detail about course" class="form-control" placeholder="Enter Short Detail" maxlength="500" required id="id_short_intro">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_course_icon">
-                                    Course Icon:
-                                </label>
-                                <input type="file" name="course_icon" id="id_course_icon">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_course_file">
-                                    Course File:
-                                </label>
-                                <input type="file" name="course_file" id="id_course_file">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_duration">
-                                    Course Duration <small>(in months)</small>:
-                                </label>
-                                <input type="text" name="duration" class="form-control" placeholder="Enter Course Duration in Months" required id="id_duration">
-                            </div>
-                        </div>
-                        <div class="row">
-                    <div class="col-md-12">
-                        <label for="id_price">
-                            Course Amount:
-                        </label>
-                        <input type="text" name="price" class="form-control" placeholder="Enter Course Price in INR" required id="id_price">
+                    <div class="col-md-12 course-action-area">
+                        <a class="btn btn-info course-action-btn">Add Course</a>
+                        <a class="btn btn-outline-secondary course-action-btn">Cancel</a>
                     </div>
                 </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="id_about_course">
-                                    About Course:
-                                </label>
-                                <textarea name="about_course" cols="40" rows="10" class="form-control" placeholder="Enter About Course" required id="id_about_course"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn btn-primary">ADD COURSE</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
             </form>
         </div>
         <div class="col-md-4"></div>
