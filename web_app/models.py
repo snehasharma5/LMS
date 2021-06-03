@@ -198,3 +198,12 @@ class JobModel(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+
+class CareerAwareness(models.Model):
+    title = models.CharField(max_length=100)
+    link = models.CharField(max_length=500)
+    banner_image = models.ImageField(upload_to='career/')
+
+    def __str__(self):
+        return self.title

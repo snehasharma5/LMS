@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top:2%;">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-4">
                             <video controls>
                                 <source src="{% static 'web_app/video/anthem.mp4' %}" type="video/mp4">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-3">
                             <video controls>
                                 <source src="{% static 'web_app/video/memories_of_2_years_completion.mp4' %}" type="video/mp4">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card mb-3">
                             <video controls>
                                 <source src="{% static 'web_app/video/covid_prevention.mp4' %}" type="video/mp4">
@@ -68,6 +68,25 @@
                                 <small class="card-title text-muted">Prevention of COVID-19 | Coronavirus in India | mygovindia | Predulive Edutech Foundation"s efforts</small>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'video-upload' user.pk %}">
+                                <div class="story-div">
+                                    <p class="story-content">Tell Us About Your Story</p>
+                                    <small>(Upload Your Own Video)</small>
+                                    <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
+                                </div>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'login' %}">
+                                <div class="story-div">
+                                    <p class="story-content">Tell Us About Your Story</p>
+                                    <small>(Upload Your Own Video)</small>
+                                    <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
+                                </div>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -115,44 +134,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h5 class="heading">Career Awareness (Career Counselling)</h5>
+                <h5 class="heading">Career Awareness</h5>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                    <a target="_blank" href="{% static 'web_app/images/t1.png' %}">
-                        <img class="counselling-image" src="{% static 'web_app/images/t1.png' %}" alt="Forest">
-                    </a>
+            {% if all_career_awareness %}
+                {% for career in all_career_awareness %}
+                    <div class="col-md-3">
+                        <a target="_blank" href="{{ career.link }}">
+                            <img class="counselling-image" src="{{ career.banner_image.url }}" alt="Forest">
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-md-12">
+                    <h5>Demo Data</h5>
                 </div>
-            <div class="col-md-3">
-                    <a target="_blank" href="{% static 'web_app/images/t2.jpeg' %}">
-                        <img class="counselling-image" src="{% static 'web_app/images/t2.jpeg' %}" alt="Forest">
-                    </a>
-                </div>
-            <div class="col-md-3">
-                    <a target="_blank" href="{% static 'web_app/images/t3.jpeg' %}">
-                        <img class="counselling-image" src="{% static 'web_app/images/t3.jpeg' %}" alt="Forest">
-                    </a>
-                </div>
-            <div class="col-md-3">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'video-upload' user.pk %}">
-                        <div class="story-div">
-                            <p class="story-content">Tell Us About Your Story</p>
-                            <small>(Upload Your Own Video)</small>
-                            <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
-                        </div>
-                    </a>
-                {% else %}
-                    <a href="{% url 'login' %}">
-                        <div class="story-div">
-                            <p class="story-content">Tell Us About Your Story</p>
-                            <small>(Upload Your Own Video)</small>
-                            <img class="video-img" src="{% static 'web_app/images/video.png' %}" alt="video.png">
-                        </div>
-                    </a>
-                {% endif %}
-            </div>
+            {% endif %}
         </div>
     </div>
     <div class="container" style="margin-top: 2%;">

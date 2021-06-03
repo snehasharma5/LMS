@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView, TemplateView, CreateView
 from .models import RegisterModel, CourseModel, CourseCategoryModel
-from .models import CareerCounsellingFormModel, VideoModel, JobModel
+from .models import CareerCounsellingFormModel, VideoModel, JobModel, CareerAwareness
 from .forms import CareerCounsellingForm, VideoUploadingForm, AddCourseForm, JobPostForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
@@ -14,7 +14,9 @@ class HomeView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
+        all_career_awareness = CareerAwareness.objects.all()[0:4]
         all_courses = CourseModel.objects.all()[0:3]
+        context['all_career_awareness'] = all_career_awareness
         context['all_courses'] = all_courses
         return context
 
