@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
-from .models import Student, CareerCounsellingFormModel, VideoModel, CourseModel, CourseCategoryModel, Expert, JobModel, Institute, Industry
+from .models import Student, CareerCounsellingFormModel, VideoModel, CourseModel, CourseCategoryModel, Expert, JobModel, Institute, Industry, CareerAwareness
 
 
 admin.site.site_header = 'Predulive Edutech Foundation Admin Dashboard'
@@ -38,5 +38,6 @@ admin.site.register(VideoModel)
 admin.site.register(CourseModel)
 admin.site.register(CourseCategoryModel)
 admin.site.register(CareerCounsellingFormModel)
+admin.site.register(CareerAwareness)
 
 # Register your models here.

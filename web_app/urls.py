@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import HomeView, ContactView, AwareView, CareerCounsellingFormView, VideoUploadingFormView, AddCourseView,\
-    CourseDetailView, EducateView, AllCourseView, InspireView, JobPostView, JobDetailView, AllJobsView
+    CourseDetailView, EducateView, AllCourseView, InspireView, JobPostView, JobDetailView, AllJobsView, CareerAwarenessView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('job-post/<int:pk>/', JobPostView.as_view(), name='job-post'),
     path('job-detail/<int:pk>/', JobDetailView.as_view(), name='job-detail'),
     path('all-jobs/', AllJobsView.as_view(), name='all-jobs'),
+    path('add-career-awareness/', CareerAwarenessView.as_view(), name='add-career-awareness'),
 
 ]

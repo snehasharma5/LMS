@@ -1,5 +1,5 @@
 from django import forms
-from .models import CareerCounsellingFormModel, VideoModel, CourseModel, JobModel
+from .models import CareerCounsellingFormModel, VideoModel, CourseModel, JobModel, CareerAwareness
 
 
 class CareerCounsellingForm(forms.ModelForm):
@@ -27,3 +27,13 @@ class JobPostForm(forms.ModelForm):
         model = JobModel
         fields = ['job_type', 'job_title', 'job_requirements', 'job_description', 'stipend', 'location',
                   'contact_mail', 'duration', 'contact_number']
+
+
+class CareerAwarenessForm(forms.ModelForm):
+    class Meta:
+        model = CareerAwareness
+        fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Title'}),
+            'link': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter or Paste Link'}),
+        }

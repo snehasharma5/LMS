@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Add Career Awareness Section</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Add Photo</button>
+    </form>
+{% endblock %}

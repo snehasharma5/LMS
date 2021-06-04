@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView, TemplateView, CreateView
 from .models import RegisterModel, CourseModel, CourseCategoryModel
 from .models import CareerCounsellingFormModel, VideoModel, JobModel, CareerAwareness
-from .forms import CareerCounsellingForm, VideoUploadingForm, AddCourseForm, JobPostForm
+from .forms import CareerCounsellingForm, VideoUploadingForm, AddCourseForm, JobPostForm, CareerAwarenessForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
@@ -14,7 +14,7 @@ class HomeView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
-        all_career_awareness = CareerAwareness.objects.all()[0:4]
+        all_career_awareness = CareerAwareness.objects.all().order_by('-id')[0:4]
         all_courses = CourseModel.objects.all()[0:3]
         context['all_career_awareness'] = all_career_awareness
         context['all_courses'] = all_courses
@@ -127,3 +127,10 @@ class AllJobsView(ListView):
         all_jobs = JobModel.objects.all()
         context = {'all_jobs': all_jobs}
         return context
+
+
+@method_decorator(login_required, name='dispatch')
+class CareerAwarenessView(CreateView):
+    model = CareerAwareness
+    template_name = 'web_app/career_awareness.html'
+    form_class = CareerAwarenessForm
