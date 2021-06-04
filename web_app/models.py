@@ -64,7 +64,7 @@ class Student(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('profile', args=(str(self.pk)))
+        return reverse('profile', args=[str(self.pk)])
 
 
 class Expert(models.Model):
@@ -83,7 +83,7 @@ class Expert(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('expert-profile', args=(str(self.pk)))
+        return reverse('expert-profile', args=[str(self.pk)])
 
 
 class Institute(models.Model):
@@ -100,7 +100,7 @@ class Institute(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('expert-profile', args=(str(self.pk)))
+        return reverse('expert-profile', args=[str(self.pk)])
 
 
 class Industry(models.Model):
@@ -118,7 +118,7 @@ class Industry(models.Model):
         return str(self.user)
 
     def get_absolute_url(self):
-        return reverse('expert-profile', args=(str(self.pk)))
+        return reverse('expert-profile', args=[str(self.pk)])
 
 
 class CareerCounsellingFormModel(models.Model):

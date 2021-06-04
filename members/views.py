@@ -57,7 +57,7 @@ class UpdateProfilePage(UpdateView):
     model = Student
     form_class = ProfileForm
     template_name = 'registration/update_profile.html'
-    success_url = reverse_lazy('home')
+    # success_url = reverse_lazy('home')
 
     def get_context_data(self, *args, **kwargs):
         context = super(UpdateProfilePage, self).get_context_data(*args, **kwargs)
