@@ -277,4 +277,13 @@
 {
     z-index: 3;
     margin-left: 10%;
+    position: fixed;
+}
+
+
+.learn-more:hover
+{
+    z-index: 3;
+    margin-left: 10%;
+    position: fixed;
 }
