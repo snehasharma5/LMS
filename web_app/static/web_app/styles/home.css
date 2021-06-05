@@ -218,31 +218,24 @@
 .text-container {
     position: absolute;
     top: 30%;
-    left: 32%;
+    left: 40%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: 2;
     margin-left: -100px;
-    text-align: center;
 }
 
- .text-container h1 {
-     font-weight: bold;
-     font-size: 50px;
-     color: #00023a;
- }
-
- .text-container h2
+ .text-container h1
  {
      font-weight: bold;
-     font-size: 40px;
-     margin-left: 30%;
-     color: #ff6624;
+     margin-left: 10%;
+     color: #00023A;
  }
 
- .text-container a
+ .text-container small
  {
-     z-index: 10;
+     margin-left: 10%;
+     font-size: 0.9em;
  }
 
 .text-container .fading-effect {
@@ -251,7 +244,7 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    /*background: white;*/
+    background: white;
   }
 @keyframes image-slide {
   0% { transform: translateX(100px) scale(0); }
@@ -278,4 +271,10 @@
 .video-div
 {
     width: 100%;
+}
+
+.learn-more
+{
+    z-index: 3;
+    margin-left: 10%;
 }
