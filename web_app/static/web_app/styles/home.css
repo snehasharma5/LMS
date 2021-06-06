@@ -217,7 +217,7 @@
 
 .text-container {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 40%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -229,15 +229,32 @@
  {
      font-weight: bold;
      margin-left: 10%;
-     color: #00023A;
+     /*color: #00023A;*/
+     background-image: linear-gradient(to right, #ff6624 10%, #00023a 90%);
+     background-clip: text;
+     -webkit-text-fill-color: transparent;
+     font-size: 4em;
  }
 
- .text-container small
+ .text-container h5
  {
      margin-left: 10%;
-     font-size: 0.9em;
+     font-size: 1.5em;
+     padding:1rem;
  }
 
+ .text-container h6
+ {
+     margin-top:10%;
+     margin-left: 10%;
+     padding:1rem;
+     border: 1px solid blueviolet;
+     border-radius: 10px;
+     font-size:1.2em;
+     width: 50%;
+     text-align: center;
+     color: blueviolet;
+ }
 .text-container .fading-effect {
     position: absolute;
     top: 0;
@@ -278,6 +295,8 @@
     z-index: 3;
     margin-left: 10%;
     position: fixed;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.4);
+    width: 20%;
 }
 
 
@@ -286,4 +305,5 @@
     z-index: 3;
     margin-left: 10%;
     position: fixed;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0);
 }

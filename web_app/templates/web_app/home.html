@@ -4,6 +4,7 @@
 {% block head %}
         <title>Predulive Edutech Foundation</title>
         <link rel="stylesheet" href="{% static 'web_app/styles/home.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block content %}
@@ -15,10 +16,13 @@
                 </div>
                 <div class="text-container">
                     <h1>Creating <u>Opportunity, Improving Life....</u></h1>
-                    <small>World's no. 1 integrated platform which offers complete solutions for YOUTH..</small>
+                    <h5>World's no. 1 integrated platform which offers complete solutions for YOUTH..</h5>
                     <div>
                         <a href="{% url 'member-register' %}" class="btn btn-danger learn-more">Learn More.</a>
                     </div>
+                    <h6>
+                        <img src="{% static 'web_app/images/globe.png' %}" alt="globe.png" style="width:15%;"> &nbsp; &nbsp;Show your talent worldwide..
+                    </h6>
                 </div>
             </div>
         </div>
@@ -196,20 +200,27 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="row">
-            <div class="col-md-12">
-                <h5 class="heading">Employment (Hot Jobs)</h5>
+            {% if user.is_authenticated and not user.is_student %}
+                <div class="col-md-8">
+                    <h5 class="heading">Employment (Hot Jobs)</h5>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-outline-danger" href="{% url 'job-post' user.pk %}" style="width:100%;">Add Job</a>
+                </div>
+            {% else %}
+                <div class="col-md-10">
+                    <h5 class="heading">Employment (Hot Jobs)</h5>
+                </div>
+            {% endif %}
+            <div class="col-md-2">
+                <a class="btn btn-default" href="{% url 'all-jobs' %}">All Jobs</a>
             </div>
         </div>
         <div class="row" style="margin-top: 1%;">
             <div class="col-md-6">
                 <h5>Government Jobs</h5>
-            </div>
-            <div class="col-md-6">
-                <h5>Tech Jobs</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">SBI Junior Associates Clerk Online, 5000 post</h5>
@@ -220,20 +231,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Google is hiring for several tech roles in India</h5>
-                                <small class="card-text">Google India has rolled out applications for several tech roles across the country. Interested candidates
-                                    can easily apply on the website. Here are the major details.
-                                </small><br>
-                                <a style="float:right;" href="https://content.techgig.com/google-is-hiring-for-several-tech-roles-in-india-here-are-the-details/articleshow/82358491.cms" class="btn btn-primary">More information</a>
-                            </div>
-                        </div>
-                    </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">UP Police Sub Inspector SI Online, 9534 Post</h5>
@@ -244,7 +244,25 @@
                     </div>
                 </div>
             </div>
+                </div>
+            </div>
             <div class="col-md-6">
+                <h5>Tech Jobs</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Google is hiring for several tech roles in India</h5>
+                                <small class="card-text">Google India has rolled out applications for several tech roles across the country. Interested candidates
+                                    can easily apply on the website. Here are the major details.
+                                </small><br>
+                                <a style="float:right;" href="https://content.techgig.com/google-is-hiring-for-several-tech-roles-in-india-here-are-the-details/articleshow/82358491.cms" class="btn btn-primary">More information</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Salesforce is hiring IT professionals for several roles</h5>
@@ -256,7 +274,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
 {% endblock %}
