@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'experts.apps.ExpertsConfig',
     'institutes.apps.InstitutesConfig',
     'industries.apps.IndustriesConfig',
+    'storages',
 
 ]
 
@@ -128,6 +129,24 @@ USE_L10N = True
 USE_TZ = True
 
 
+# S3 Buckets config
+
+AWS_ACCESS_KEY_ID = os.environ.get('predulive-db-access-id')
+AWS_SECRET_ACCESS_KEY = os.environ.get('predulive-secret-access-key')
+AWS_STORAGE_BUCKET_NAME = 'predulive-bucket'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -139,7 +158,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
