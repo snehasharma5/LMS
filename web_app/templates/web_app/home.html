@@ -155,22 +155,54 @@
             {% endif %}
         </div>
         <div class="row">
-            {% if all_career_awareness %}
-                {% for career in all_career_awareness %}
-                    <div class="col-md-3 career-div">
-                        <a target="_blank" href="{{ career.link }}">
-                            <img class="counselling-image" src="{{ career.banner_image.url }}" alt="{{ career.title }}">
-                            <div class="overlay">
-                                <div class="text">Click for more details</div>
-                            </div>
-                        </a>
+{#            {% if all_career_awareness %}#}
+{#                {% for career in all_career_awareness %}#}
+{#                    <div class="col-md-3 career-div">#}
+{#                        <a target="_blank" href="{{ career.link }}">#}
+{#                            <img class="counselling-image" src="{{ career.banner_image.url }}" alt="{{ career.title }}">#}
+{#                            <div class="overlay">#}
+{#                                <div class="text">Click for more details</div>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            {% else %}#}
+{#                <div class="col-md-12">#}
+{#                    <h5>Demo Data</h5>#}
+{#                </div>#}
+{#            {% endif %}#}
+            <div class="col-md-3 career-div">
+                <a target="_blank" href="https://www.msins.in/">
+                    <img class="counselling-image" src="{% static 'web_app/images/mumbai.png' %}" alt="mumbai">
+                    <div class="overlay">
+                        <div class="text">Click for more details</div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="col-md-12">
-                    <h5>Demo Data</h5>
-                </div>
-            {% endif %}
+                </a>
+            </div>
+            <div class="col-md-3 career-div">
+                <a target="_blank" href="https://hub.tie.org/e/tyevirtual2021">
+                    <img class="counselling-image" src="{% static 'web_app/images/tie_hyd.jpg' %}" alt="tie_hydrabad">
+                    <div class="overlay">
+                        <div class="text">Click for more details</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 career-div">
+                <a target="_blank" href="https://climatelaunchpad.org/application-form/">
+                    <img class="counselling-image" src="{% static 'web_app/images/climate.jpg' %}" alt="climate">
+                    <div class="overlay">
+                        <div class="text">Click for more details</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 career-div">
+                <a target="_blank" href="https://innovate.stpinext.in/about-us/image_second_cohort">
+                    <img class="counselling-image" src="{% static 'web_app/images/stpi_contest.jpg' %}" alt="stpi_contest">
+                    <div class="overlay">
+                        <div class="text">Click for more details</div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
     <div class="container" style="margin-top: 2%;">
