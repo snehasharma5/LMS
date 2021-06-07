@@ -231,7 +231,8 @@
      margin-left: 10%;
      /*color: #00023A;*/
      background-image: linear-gradient(to right, #ff6624 10%, #00023a 90%);
-     background-clip: text;
+     /*background-clip: text;*/
+     -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
      font-size: 4em;
  }
